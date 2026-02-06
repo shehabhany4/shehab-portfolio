@@ -1,0 +1,96 @@
+.projects-section {
+  padding: 80px 0;
+}
+
+.project-card {
+  border-radius: 16px;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 1s ease, background-color 0.4s ease, box-shadow 0.4s ease;
+  height: 100%;
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border-color: transparent;
+  box-shadow: 0 4px 15px var(--shadow-card);
+}
+
+.project-card.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.project-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 8px 25px var(--shadow-card-hover);
+}
+
+.project-card .card-title {
+  color: var(--text-primary);
+  transition: color 0.4s ease;
+}
+
+.project-img-wrapper img {
+  height: 220px;
+  object-fit: cover;
+}
+
+.project-tools {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0 15px;
+  font-size: 20px;
+  color: var(--text-secondary);
+  transition: color 0.4s ease;
+}
+
+.project-tools svg {
+  transition: 2s ease;
+}
+
+.project-tools svg:hover {
+  transform: scale(1.2);
+  color: #7c3aed;
+}
+
+.project-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.tool-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.85rem;
+  background: var(--tool-item-bg);
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: var(--text-secondary);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Dark mode button overrides */
+[data-theme="dark"] .project-card .btn-dark {
+  background-color: #2e3350;
+  border-color: #2e3350;
+  color: #e8eaf0;
+}
+
+[data-theme="dark"] .project-card .btn-dark:hover {
+  background-color: #3a4070;
+  border-color: #3a4070;
+}
+
+[data-theme="dark"] .project-card .btn-outline-primary {
+  border-color: #6c63ff;
+  color: #6c63ff;
+}
+
+[data-theme="dark"] .project-card .btn-outline-primary:hover {
+  background-color: #6c63ff;
+  color: #ffffff;
+}

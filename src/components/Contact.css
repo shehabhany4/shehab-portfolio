@@ -1,0 +1,72 @@
+.contact-section {
+  margin: .6%;
+  padding: 80px 0;
+  color: var(--text-primary);
+  transition: color 0.4s ease;
+}
+
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal:nth-child(1) { transition-delay: 0.2s; }
+.reveal:nth-child(2) { transition-delay: 0.4s; }
+.reveal:nth-child(3) { transition-delay: 0.6s; }
+.reveal:nth-child(4) { transition-delay: 0.8s; }
+
+/* Form styling */
+.contact-section .form-control {
+  background-color: var(--form-bg);
+  border-color: var(--form-border);
+  color: var(--form-text);
+  transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+}
+
+.contact-section .form-control::placeholder {
+  color: var(--form-placeholder);
+}
+
+.contact-section .form-control:focus {
+  background-color: var(--form-bg);
+  border-color: var(--accent-primary);
+  color: var(--form-text);
+  box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25);
+}
+
+/* Form wrapper card bg */
+[data-theme="dark"] .contact-section .p-4.rounded {
+  background-color: var(--bg-card);
+  border: 1px solid var(--form-border);
+}
+
+/* Send button */
+.contact-section .btn-primary {
+  background-color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: #ffffff;
+  transition: background-color 0.4s ease;
+}
+
+.contact-section .btn-primary:hover {
+  background-color: var(--accent-hello);
+  border-color: var(--accent-hello);
+}
+
+/* Social links */
+.social-links a {
+  color: var(--social-link-color);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--social-link-hover);
+  transform: translateY(-3px);
+}

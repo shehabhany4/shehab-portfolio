@@ -1,0 +1,102 @@
+.hero-section {
+  padding: 17vh 0;
+  margin: 0.6%;
+
+  /* ---------- hidden states ---------- */
+  .hello-text {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                color 0.4s ease;
+  }
+  .hero-title {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                color 0.4s ease,
+                text-shadow 0.4s ease;
+  }
+  .hero-desc {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                color 0.4s ease;
+  }
+  .image-wrapper {
+    opacity: 0;
+    transform: translateX(50px) scale(0.92);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.4s ease;
+  }
+
+  /* ---------- revealed states ---------- */
+  &.show {
+    .hello-text {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.15s;
+    }
+    .hero-title {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.3s;
+    }
+    .hero-desc {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.48s;
+    }
+    .image-wrapper {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+      transition-delay: 0.25s;
+    }
+  }
+
+  /* ---------- base styles ---------- */
+  .hello-text {
+    color: var(--accent-hello);
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  .hero-title {
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+    text-shadow: 1px 1.5px 2px var(--hero-title-shadow);
+  }
+
+  .code-icon {
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 28px;
+    color: var(--accent-hello);
+  }
+
+  .hero-desc {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    max-width: 500px;
+  }
+
+  .image-wrapper {
+    width: 310px;
+    height: 420px;
+    margin: auto;
+    border-radius: 50% / 40%;
+    overflow: hidden;
+    border: 3px solid var(--hero-border);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
