@@ -17,18 +17,13 @@ const Footer = lazy(() => import("./components/Footer"));
 
 const Loader = () => (
   <div
-    style={{
-      height: "100vh",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      fontSize: "18px",
-      fontWeight: "600",
-    }}
+    className="d-flex justify-content-center align-items-center"
+    style={{ height: "100vh" }}
   >
-    Loading...
+    <div className="spinner-border text-dark" role="status" />
   </div>
 );
+
 
 function App() {
   return (
