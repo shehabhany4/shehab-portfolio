@@ -31,12 +31,13 @@ const Hero = () => {
             </h1>
 
             <p className="hero-desc">
-              Hi, I’m Shehab Hany , a Frontend Developer with 1+ year of
-              hands-on experience. Completed 10+ frontend projects and gained
-              real-world experience through 3+ internship. Specialized in
-              building modern, responsive, and user-friendly web interfaces
-              using HTML, CSS, JavaScript, Bootstrap, and React. Focused on
-              clean code, performance, and great user experience.
+              Hi, I’m Shehab Hany, a Frontend Developer with 1+ year of hands-on
+              experience. Completed 10+ frontend projects and gained real-world
+              experience through 3+ internships. Specialized in building modern,
+              responsive, and user-friendly web interfaces using HTML, CSS,
+              JavaScript, Bootstrap, and React. Focused on clean code,
+              performance, and great user experience, delivering pixel-perfect,
+              scalable, and production-ready interfaces.
             </p>
           </Col>
 
