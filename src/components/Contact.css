@@ -5,6 +5,7 @@
   color: var(--text-primary);
   position: relative;
   overflow: hidden;
+  font-family: 'DM Sans', sans-serif;
 }
 
 .contact-section::before,

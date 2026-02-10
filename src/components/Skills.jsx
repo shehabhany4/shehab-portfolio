@@ -1,24 +1,12 @@
-import React, { useEffect, useRef } from "react";
-import { Container, Card } from "react-bootstrap";
+import React, { useEffect, useRef, useState } from "react";
 import {
-  FaHtml5,
-  FaCss3Alt,
-  FaJs,
-  FaBootstrap,
-  FaGithub,
-  FaReact,
-  FaNodeJs,
-  FaCode,
-  FaTools,
-  FaBrain,
-  FaUsers
+  FaHtml5, FaCss3Alt, FaJs, FaBootstrap, FaGithub,
+  FaReact, FaNodeJs, FaCode, FaTools, FaBrain, FaUsers, FaJava,
 } from "react-icons/fa";
-import { SiTypescript } from "react-icons/si";
+import { SiTypescript, SiCplusplus } from "react-icons/si";
 import { MdDevices } from "react-icons/md";
 import { TbApi } from "react-icons/tb";
 import { BiLogoVisualStudio } from "react-icons/bi";
-import { SiCplusplus } from "react-icons/si";
-import { FaJava } from "react-icons/fa";
 import "./Skills.css";
 
 const skillsCategories = [
@@ -26,152 +14,178 @@ const skillsCategories = [
     id: 1,
     title: "Frontend Development",
     icon: <FaCode />,
-    gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+    accentColor: "#6c63ff",
+    accentLight: "rgba(108,99,255,0.12)",
+    size: "large",         // spans 2 cols
     skills: [
-      { name: "HTML5", icon: <FaHtml5 />, color: "#E34F26" },
-      { name: "CSS3", icon: <FaCss3Alt />, color: "#264DE4" },
-      { name: "JavaScript", icon: <FaJs />, color: "#F7DF1E" },
-      { name: "TypeScript", icon: <SiTypescript />, color: "#3178C6" },
-      { name: "React.js", icon: <FaReact />, color: "#61DAFB" },
-      { name: "Bootstrap", icon: <FaBootstrap />, color: "#7952B3" },
-      { name: "Node.js", icon: <FaNodeJs />, color: "#339933" },
-      { name: "Responsive Design", icon: <MdDevices />, color: "#4CAF50" },
+      { name: "HTML5",             icon: <FaHtml5 />,           color: "#E34F26" },
+      { name: "CSS3",              icon: <FaCss3Alt />,          color: "#264DE4" },
+      { name: "JavaScript",        icon: <FaJs />,              color: "#F7DF1E" },
+      { name: "TypeScript",        icon: <SiTypescript />,      color: "#3178C6" },
+      { name: "React.js",          icon: <FaReact />,           color: "#61DAFB" },
+      { name: "Bootstrap",         icon: <FaBootstrap />,       color: "#7952B3" },
+      { name: "Node.js",           icon: <FaNodeJs />,          color: "#339933" },
+      { name: "Responsive Design", icon: <MdDevices />,         color: "#4CAF50" },
     ],
   },
   {
     id: 2,
     title: "Tools & Technologies",
     icon: <FaTools />,
-    gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+    accentColor: "#f06292",
+    accentLight: "rgba(240,98,146,0.12)",
+    size: "small",
     skills: [
-      { name: "Git", icon: <FaGithub />, color: "#F05032" },
-      { name: "GitHub", icon: <FaGithub />, color: "#181717" },
-      { name: "VS Code", icon: <BiLogoVisualStudio />, color: "#007ACC" },
-      { name: "RESTful APIs", icon: <TbApi />, color: "#0d6efd" },
+      { name: "Git",          icon: <FaGithub />,             color: "#F05032" },
+      { name: "GitHub",       icon: <FaGithub />,             color: "#181717" },
+      { name: "VS Code",      icon: <BiLogoVisualStudio />,   color: "#007ACC" },
+      { name: "RESTful APIs", icon: <TbApi />,                color: "#0d6efd" },
     ],
   },
   {
     id: 3,
-    title: "Programming & CS Fundamentals",
+    title: "CS Fundamentals",
     icon: <FaCode />,
-    gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+    accentColor: "#26c6da",
+    accentLight: "rgba(38,198,218,0.12)",
+    size: "small",
     skills: [
-      { name: "Java", icon: <FaJava />, color: "#007396" },
-      { name: "C++", icon: <SiCplusplus />, color: "#00599C" },
+      { name: "Java",                icon: <FaJava />,    color: "#007396" },
+      { name: "C++",                 icon: <SiCplusplus />, color: "#00599C" },
       { name: "Software Engineering", text: "SE" },
-      { name: "Data Base", text: "DB" },
-      { name: "OOP", text: "OOP" },
-      { name: "Data Structures", text: "DS" },
-      { name: "Algorithms", text: "ALG" },
+      { name: "Database",            text: "DB" },
+      { name: "OOP",                 text: "OOP" },
+      { name: "Data Structures",     text: "DS" },
+      { name: "Algorithms",          text: "ALG" },
     ],
   },
   {
     id: 4,
     title: "Soft Skills",
     icon: <FaBrain />,
-    gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+    accentColor: "#ffb300",
+    accentLight: "rgba(255,179,0,0.12)",
+    size: "full",          // spans full width
     skills: [
-      { name: "Teamwork", icon: <FaUsers /> },
-      { name: "Communication", text: "COM" },
+      { name: "Teamwork",        icon: <FaUsers />,  color: "#ffb300" },
+      { name: "Communication",   text: "COM" },
       { name: "Problem Solving", text: "PS" },
       { name: "Time Management", text: "TM" },
-      { name: "Self-Learning", text: "SL" },
-      { name: "Collaboration", text: "CLB" },
+      { name: "Self-Learning",   text: "SL" },
+      { name: "Collaboration",   text: "CLB" },
     ],
   },
 ];
 
 const Skills = () => {
-  const cardRefs = useRef([]);
+  const sectionRef  = useRef(null);
+  const panelRefs   = useRef([]);
+  const [visible, setVisible] = useState(new Set());
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("show");
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            const i = parseInt(e.target.dataset.index, 10);
+            setVisible((prev) => new Set([...prev, i]));
+            observer.unobserve(e.target);
           }
         });
       },
-      { threshold: 0.2, rootMargin: "50px" }
+      { threshold: 0.15 }
     );
-
-    const currentRefs = cardRefs.current;
-    currentRefs.forEach((card) => {
-      if (card) observer.observe(card);
-    });
-
-    return () => {
-      currentRefs.forEach((card) => {
-        if (card) observer.unobserve(card);
-      });
-    };
+    panelRefs.current.forEach((el) => el && observer.observe(el));
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section 
-      id="skills" 
-      className="skills-section py-5"
-      aria-label="Skills and Expertise"
-    >
-      <Container>
-        <h2 className="section-title text-center mb-5">
-          <span aria-hidden="true">💻</span> Skills
-        </h2>
+    <section id="skills" className="sk-section" aria-label="Skills and Expertise">
+      {/* Background decoration */}
+      <div className="sk-bg" aria-hidden="true">
+        <div className="sk-orb sk-orb-1" />
+        <div className="sk-orb sk-orb-2" />
+        <div className="sk-grid-dots" />
+      </div>
 
-        <div className="timeline-container" role="list">
-          {skillsCategories.map((category, index) => (
+      <div className="sk-container">
+        {/* Header */}
+        <header className="sk-header">
+          <div className="sk-eyebrow">
+            <span className="sk-eyebrow-num"></span>
+            <span className="sk-eyebrow-line" />
+            <span>Expertise</span>
+          </div>
+          <h2 className="sk-title">
+            <span className="sk-title-icon">💻</span>
+            Skills
+            <span className="sk-title-dot">.</span>
+          </h2>
+          <p className="sk-subtitle">Technologies and tools I work with</p>
+        </header>
+
+        {/* Bento Grid */}
+        <div className="sk-bento">
+          {skillsCategories.map((cat, index) => (
             <article
-              key={category.id}
-              ref={(el) => (cardRefs.current[index] = el)}
-              className={`timeline-item ${
-                index % 2 === 0 ? "timeline-left" : "timeline-right"
-              }`}
-              role="listitem"
+              key={cat.id}
+              ref={(el) => (panelRefs.current[index] = el)}
+              data-index={index}
+              data-size={cat.size}
+              className={`sk-panel ${visible.has(index) ? "sk-panel--visible" : ""}`}
+              style={{
+                "--panel-delay":  `${index * 110}ms`,
+                "--accent":       cat.accentColor,
+                "--accent-light": cat.accentLight,
+              }}
             >
-              <div className="timeline-dot" aria-hidden="true"></div>
-              <div className="timeline-connector" aria-hidden="true"></div>
+              {/* Glow */}
+              <div className="sk-panel__glow" />
 
-              <Card className="skill-category-card">
-                <div className="card-content">
-                  <div 
-                    className="card-header-section"
-                    style={{ background: category.gradient }}
-                  >
-                    <div className="category-icon">
-                      {category.icon}
-                    </div>
-                    <h3 className="category-title">{category.title}</h3>
-                  </div>
-                  
-                  <Card.Body>
-                    <div className="skills-grid">
-                      {category.skills.map((skill, idx) => (
-                        <div key={idx} className="skill-badge">
-                          {skill.icon && (
-                            <span 
-                              className="skill-icon" 
-                              style={{ color: skill.color }}
-                            >
-                              {skill.icon}
-                            </span>
-                          )}
-                          {skill.text && (
-                            <span className="skill-text-badge">
-                              {skill.text}
-                            </span>
-                          )}
-                          <span className="skill-name">{skill.name}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </Card.Body>
+              {/* Header */}
+              <div className="sk-panel__header">
+                <span className="sk-panel__icon">{cat.icon}</span>
+                <div className="sk-panel__title-wrap">
+                  <h3 className="sk-panel__title">{cat.title}</h3>
+                  <span className="sk-panel__count">
+                    {cat.skills.length} skills
+                  </span>
                 </div>
-              </Card>
+                <div className="sk-panel__accent-bar" />
+              </div>
+
+              {/* Divider */}
+              <div className="sk-panel__divider" />
+
+              {/* Skills */}
+              <div className="sk-panel__chips">
+                {cat.skills.map((skill, i) => (
+                  <span
+                    key={i}
+                    className="sk-chip"
+                    style={{
+                      "--chip-color":  skill.color || cat.accentColor,
+                      "--chip-delay":  `${i * 50}ms`,
+                    }}
+                  >
+                    {skill.icon && (
+                      <span className="sk-chip__icon">{skill.icon}</span>
+                    )}
+                    {skill.text && (
+                      <span className="sk-chip__badge">{skill.text}</span>
+                    )}
+                    <span className="sk-chip__name">{skill.name}</span>
+                  </span>
+                ))}
+              </div>
+
+              <span className="sk-panel__num">
+                {String(index + 1).padStart(2, "0")}
+              </span>
             </article>
           ))}
         </div>
-      </Container>
+      </div>
     </section>
   );
 };

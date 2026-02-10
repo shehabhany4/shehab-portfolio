@@ -6,6 +6,7 @@
   overflow: hidden;
   margin-top: 4rem;
   transition: background-color 0.4s ease, color 0.4s ease;
+  font-family: 'DM Sans', sans-serif;
 }
 
 .site-footer::before {

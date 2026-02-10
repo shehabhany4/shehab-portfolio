@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Container } from "react-bootstrap";
 import "./Certificates.css";
 
 import cert1 from "../assets/Certificates/c1.png";
@@ -16,16 +15,30 @@ import cert11 from "../assets/Certificates/c11.png";
 import cert12 from "../assets/Certificates/c12.png";
 
 const certificatesData = {
-  frontend: [cert1, cert4, cert5,cert6,cert9],
-  internships: [cert2, cert3],
-  others: [cert7,cert8,cert10,cert11,cert12],
+  frontend: {
+    label: "Frontend",
+    icon: "⚡",
+    certs: [cert1, cert4, cert5, cert6, cert9],
+  },
+  internships: {
+    label: "Internships",
+    icon: "🏢",
+    certs: [cert2, cert3],
+  },
+  others: {
+    label: "Others",
+    icon: "🎓",
+    certs: [cert7, cert8, cert10, cert11, cert12],
+  },
 };
 
 const Certificates = () => {
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
   const [selectedCert, setSelectedCert] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null);
   const [activeCategory, setActiveCategory] = useState("frontend");
+  const [animating, setAnimating] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -35,83 +48,185 @@ const Certificates = () => {
           observer.unobserve(entry.target);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
-
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
+
+  const handleCategoryChange = (cat) => {
+    if (cat === activeCategory || animating) return;
+    setAnimating(true);
+    setTimeout(() => {
+      setActiveCategory(cat);
+      setAnimating(false);
+    }, 300);
+  };
+
+  const currentCerts = certificatesData[activeCategory].certs;
+
+  const openModal = (img, index) => {
+    setSelectedCert(img);
+    setSelectedIndex(index);
+  };
+
+  const closeModal = () => {
+    setSelectedCert(null);
+    setSelectedIndex(null);
+  };
+
+  const navigate = (dir) => {
+    const newIndex = selectedIndex + dir;
+    if (newIndex < 0 || newIndex >= currentCerts.length) return;
+    setSelectedCert(currentCerts[newIndex]);
+    setSelectedIndex(newIndex);
+  };
+
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (!selectedCert) return;
+      if (e.key === "Escape") closeModal();
+      if (e.key === "ArrowRight") navigate(1);
+      if (e.key === "ArrowLeft") navigate(-1);
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [selectedCert, selectedIndex]);
 
   return (
     <>
       <section
         id="certificates"
         ref={sectionRef}
-        className={`certificates-section ${isVisible ? "show" : ""}`}
+        className={`cert-section ${isVisible ? "visible" : ""}`}
       >
-        <Container>
-          <h2 className="section-title text-center mb-4">
-            🏆 Certificates
-          </h2>
+        {/* Ambient background orbs */}
+        <div className="cert-bg">
+          <div className="orb orb-1" />
+          <div className="orb orb-2" />
+          <div className="orb orb-3" />
+          <div className="grid-lines" />
+        </div>
 
-          <div className="cert-tabs">
-            <button
-              className={activeCategory === "frontend" ? "active" : ""}
-              onClick={() => setActiveCategory("frontend")}
-            >
-              frontend
-            </button>
-
-            <button
-              className={activeCategory === "internships" ? "active" : ""}
-              onClick={() => setActiveCategory("internships")}
-            >
-              Internships
-            </button>
-
-            <button
-              className={activeCategory === "others" ? "active" : ""}
-              onClick={() => setActiveCategory("others")}
-            >
-              Others
-            </button>
+        <div className="cert-container">
+          {/* Header */}
+          <div className="cert-header">
+            <div className="cert-eyebrow">
+              <span className="eyebrow-line" />
+              <span>ACHIEVEMENTS</span>
+              <span className="eyebrow-line" />
+            </div>
+            <h2 className="cert-title">
+              <span className="title-icon">🏆</span>
+              <span>Certificates</span>
+            </h2>
+            <p className="cert-subtitle">
+              A collection of earned recognitions and professional milestones
+            </p>
           </div>
 
-          <div className="certificates-grid">
-            {certificatesData[activeCategory].map((img, index) => (
-              <div
-                className="certificate-card"
-                key={index}
-                onClick={() => setSelectedCert(img)}
+          {/* Tab Bar */}
+          <div className="cert-tabs">
+            {Object.entries(certificatesData).map(([key, val]) => (
+              <button
+                key={key}
+                className={`cert-tab ${activeCategory === key ? "active" : ""}`}
+                onClick={() => handleCategoryChange(key)}
               >
-                <img src={img} alt={`certificate-${index}`} />
-                <div className="view-overlay">
-                  <button className="view-btn">
-                    View Certificate
-                  </button>
+                <span className="tab-icon">{val.icon}</span>
+                <span className="tab-label">{val.label}</span>
+                <span className="tab-count">
+                  {val.certs.length}
+                </span>
+                {activeCategory === key && <span className="tab-active-bar" />}
+              </button>
+            ))}
+          </div>
+
+          {/* Grid */}
+          <div className={`cert-grid ${animating ? "grid-exit" : "grid-enter"}`}>
+            {currentCerts.map((img, index) => (
+              <div
+                key={index}
+                className="cert-card"
+                style={{ "--delay": `${index * 80}ms` }}
+                onClick={() => openModal(img, index)}
+              >
+                <div className="cert-card-inner">
+                  <div className="cert-img-wrap">
+                    <img src={img} alt={`certificate-${index + 1}`} />
+                    <div className="cert-shine" />
+                  </div>
+                  <div className="cert-card-overlay">
+                    <div className="overlay-content">
+                      <div className="overlay-icon">🔍</div>
+                      <span>View Certificate</span>
+                    </div>
+                  </div>
+                  <div className="cert-card-num">
+                    {String(index + 1).padStart(2, "0")}
+                  </div>
                 </div>
               </div>
             ))}
           </div>
-        </Container>
+        </div>
       </section>
 
+      {/* Modal */}
       {selectedCert && (
-        <div
-          className="certificate-modal"
-          onClick={() => setSelectedCert(null)}
-        >
-          <div
-            className="modal-content"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              className="close-btn"
-              onClick={() => setSelectedCert(null)}
-            >
-              ✕
-            </button>
-            <img src={selectedCert} alt="certificate-full" />
+        <div className="cert-modal-backdrop" onClick={closeModal}>
+          <div className="cert-modal" onClick={(e) => e.stopPropagation()}>
+            {/* Top bar */}
+            <div className="modal-topbar">
+              <span className="modal-counter">
+                {String(selectedIndex + 1).padStart(2, "0")} /{" "}
+                {String(currentCerts.length).padStart(2, "0")}
+              </span>
+              <span className="modal-category-label">
+                {certificatesData[activeCategory].icon}{" "}
+                {certificatesData[activeCategory].label}
+              </span>
+              <button className="modal-close" onClick={closeModal}>
+                ✕
+              </button>
+            </div>
+
+            {/* Image */}
+            <div className="modal-img-area">
+              <img
+                src={selectedCert}
+                alt="certificate-full"
+                className="modal-img"
+              />
+            </div>
+
+            {/* Navigation */}
+            <div className="modal-nav">
+              <button
+                className={`nav-btn ${selectedIndex === 0 ? "disabled" : ""}`}
+                onClick={() => navigate(-1)}
+                disabled={selectedIndex === 0}
+              >
+                ← Prev
+              </button>
+              <div className="modal-dots">
+                {currentCerts.map((_, i) => (
+                  <span
+                    key={i}
+                    className={`dot ${i === selectedIndex ? "active" : ""}`}
+                    onClick={() => { setSelectedCert(currentCerts[i]); setSelectedIndex(i); }}
+                  />
+                ))}
+              </div>
+              <button
+                className={`nav-btn ${selectedIndex === currentCerts.length - 1 ? "disabled" : ""}`}
+                onClick={() => navigate(1)}
+                disabled={selectedIndex === currentCerts.length - 1}
+              >
+                Next →
+              </button>
+            </div>
           </div>
         </div>
       )}
