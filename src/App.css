@@ -1,4 +1,3 @@
-/* ===================== ROOT & THEMES ===================== */
 :root,
 [data-theme="light"],
 body[data-theme="light"] {
@@ -127,7 +126,6 @@ body[data-theme="dark"] {
   color: #e8eaf0 !important;
 }
 
-/* Sections */
 [data-theme="dark"] #home,
 [data-theme="dark"] #work,
 [data-theme="dark"] #skills,

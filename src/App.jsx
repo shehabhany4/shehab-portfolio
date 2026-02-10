@@ -2,8 +2,6 @@ import { Suspense, lazy } from "react";
 import { ThemeProvider } from "./components/ThemeContext";
 import MyNavbar from "./components/MyNavbar";
 import "./App.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 const Hero = lazy(() => import("./components/Hero"));
 const Education = lazy(() => import("./components/Education"));

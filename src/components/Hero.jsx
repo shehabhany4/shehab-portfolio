@@ -61,9 +61,9 @@ const Hero = () => {
       id="home"
       className={`hero-section ${isVisible ? "show" : ""}`}
     >
-      <Container>
-        <Row className="align-items-center">
-          <Col md={6} className="hero-text">
+      <Container fluid className="px-0">
+        <Row className="align-items-center mx-0">
+          <Col md={6} className="hero-text px-4">
             <p className="hello-text"> Hello, I am </p>
             <h1 className="hero-title">
               Shehab Hany Helmy{" "}
@@ -77,8 +77,7 @@ const Hero = () => {
               pixel-perfect, scalable, production-ready projects.
             </p>
           </Col>
-
-          <Col md={6} className="text-center">
+          <Col md={6} className="text-center px-4">
             <div className="image-col-wrapper">
               <div className="image-wrapper">
                 <div className="img-ring img-ring--outer"></div>
@@ -91,10 +90,9 @@ const Hero = () => {
                 </div>
                 <img src={heroImage} alt="Shehab" loading="lazy" />
               </div>
-
               <div className="social-strip">
                 {socialLinks.map((s, i) => (
-                  <a
+                   <a
                     key={s.label}
                     href={s.href}
                     target="_blank"
