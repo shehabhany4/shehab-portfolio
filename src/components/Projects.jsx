@@ -153,7 +153,6 @@ const Projects = () => {
     >
       <Container>
         <div className="section-title-wrapper">
-          <span className="title-tag">&lt;projects /&gt;</span>
           <h2 className="section-title">My Projects</h2>
           <p className="section-subtitle">
             A showcase of my recent work and experiments
