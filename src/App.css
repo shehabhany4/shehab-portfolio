@@ -1,3 +1,4 @@
+/* ===================== ROOT & THEMES ===================== */
 :root,
 [data-theme="light"],
 body[data-theme="light"] {
@@ -12,9 +13,6 @@ body[data-theme="light"] {
   --text-secondary: #706e6e;
   --text-muted: #888888;
   --text-navbar: #000000;
-  --text-footer-start: rgb(12, 12, 12);
-  --text-footer-span: #242424;
-  --text-footer-end: #050505;
 
   --accent-primary: #452bf0;
   --accent-title: #001f8d;
@@ -52,6 +50,11 @@ body[data-theme="light"] {
 
   --navbar-toggle-bg: #ffffff;
   --navbar-toggle-border: #cccccc;
+
+  --bg-footer: #f4f6f9;
+  --text-footer: #333;
+  --text-footer-muted: #666;
+  --sc: #333;
 }
 
 [data-theme="dark"],
@@ -67,9 +70,6 @@ body[data-theme="dark"] {
   --text-secondary: #a0a4b5;
   --text-muted: #6b7080;
   --text-navbar: #d8dae5;
-  --text-footer-start: #c8cad5;
-  --text-footer-span: #e0e2ea;
-  --text-footer-end: #8a8e9e;
 
   --accent-primary: #6c63ff;
   --accent-title: #7b8cff;
@@ -107,6 +107,11 @@ body[data-theme="dark"] {
 
   --navbar-toggle-bg: #1a1d2e;
   --navbar-toggle-border: #2e3350;
+
+  --bg-footer: #0d0d0d;
+  --text-footer: #ccc;
+  --text-footer-muted: #888;
+  --sc: #ccc;
 }
 
 body {
@@ -122,6 +127,7 @@ body[data-theme="dark"] {
   color: #e8eaf0 !important;
 }
 
+/* Sections */
 [data-theme="dark"] #home,
 [data-theme="dark"] #work,
 [data-theme="dark"] #skills,
@@ -132,23 +138,14 @@ body[data-theme="dark"] {
   background-color: #0f1117;
   color: #e8eaf0;
 }
-.whatsappicon{
-position: fixed;
-right: 1.5vw;
-bottom: 1.5vh;
-z-index: 5;
-width: 2.5em;
-height: 2.5em;
-background-color: rgb(3, 197, 3);
-display: flex;
-justify-content: center;
-align-items: center;
-border-radius: 50%;
-box-shadow: 0 4px 15px var(--shadow-card);
-a{
-  color: white ;
-}
-&:hover{
-  background-color:rgb(3, 139, 3) ;
-}
+
+[data-theme="light"] #home,
+[data-theme="light"] #work,
+[data-theme="light"] #skills,
+[data-theme="light"] #projects,
+[data-theme="light"] #about,
+[data-theme="light"] #contact,
+[data-theme="light"] .certificates-section {
+  background-color: #ffffff;
+  color: #1a1a1a;
 }

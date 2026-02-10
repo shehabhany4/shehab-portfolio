@@ -30,9 +30,6 @@ function App() {
     <ThemeProvider>
       <MyNavbar />
        
-       <div className="whatsappicon">
-        <a href="https://wa.me/201097820873" target="_blank"><FontAwesomeIcon icon={faWhatsapp} size="2x" /></a>
-       </div>
 
       <Suspense fallback={<Loader />}>
         <Hero />
