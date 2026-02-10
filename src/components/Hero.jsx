@@ -64,7 +64,7 @@ const Hero = () => {
       <Container>
         <Row className="align-items-center">
           <Col md={6} className="hero-text">
-            <p className="hello-text">👋 Hello, I am </p>
+            <p className="hello-text"> Hello, I am </p>
             <h1 className="hero-title">
               Shehab Hany Helmy{" "}
               <span className="title-icon">

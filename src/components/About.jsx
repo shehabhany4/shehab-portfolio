@@ -42,7 +42,6 @@ const About = () => {
     <section id="about" className="about-section">
       <Container>
         <div className="section-title-wrapper reveal">
-          <span className="title-tag">&lt;about /&gt;</span>
           <h2 className="section-title">About Me</h2>
         </div>
 

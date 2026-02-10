@@ -50,7 +50,6 @@ const Contact = () => {
       <Container>
 
         <div className="section-title-wrapper reveal">
-          <span className="title-tag">&lt;contact /&gt;</span>
           <h2 className="section-title">Get In Touch</h2>
           <p className="section-subtitle">Have a project in mind or just want to say hello? I'd love to hear from you.</p>
         </div>

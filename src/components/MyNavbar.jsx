@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "./ThemeContext";
 import "./Navbar.css";
-import logo from '../assets/MyLogo.webp';
+import logo from "../assets/MyLogo.webp";
 
 const MyNavbar = () => {
   const { theme, toggleTheme } = useTheme();
@@ -11,12 +11,12 @@ const MyNavbar = () => {
 
   const navLinks = [
     { href: "#home", label: "Home" },
+    { href: "#about", label: "About" },
+    { href: "#skills", label: "Skills" },
     { href: "#education", label: "Education" },
     { href: "#work", label: "Experience" },
     { href: "#projects", label: "Projects" },
     { href: "#certificates", label: "Certificates" },
-    { href: "#skills", label: "Skills" },
-    { href: "#about", label: "About" },
     { href: "#contact", label: "Contact" },
   ];
 
@@ -30,7 +30,9 @@ const MyNavbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navLinks.map(link => document.querySelector(link.href));
+      const sections = navLinks.map((link) =>
+        document.querySelector(link.href),
+      );
       const scrollPosition = window.scrollY + 100;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -48,8 +50,8 @@ const MyNavbar = () => {
 
   useEffect(() => {
     document.body.style.overflow = sidebarOpen ? "hidden" : "";
-    return () => { 
-      document.body.style.overflow = ""; 
+    return () => {
+      document.body.style.overflow = "";
     };
   }, [sidebarOpen]);
 
@@ -69,8 +71,8 @@ const MyNavbar = () => {
           <ul className="desktop-nav-links">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a 
-                  href={link.href} 
+                <a
+                  href={link.href}
                   className={`nav-link ${activeSection === link.href ? "active" : ""}`}
                 >
                   {link.label}
@@ -84,14 +86,20 @@ const MyNavbar = () => {
             <div
               className="theme-toggle"
               onClick={toggleTheme}
-              title={theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"}
+              title={
+                theme === "light"
+                  ? "Switch to Dark Mode"
+                  : "Switch to Light Mode"
+              }
               role="button"
               aria-label="Toggle theme"
             >
               <div className="toggle-track">
                 <span className="toggle-icon toggle-icon-sun">☀️</span>
                 <span className="toggle-icon toggle-icon-moon">🌙</span>
-                <div className={`toggle-knob ${theme === "dark" ? "dark" : ""}`}></div>
+                <div
+                  className={`toggle-knob ${theme === "dark" ? "dark" : ""}`}
+                ></div>
               </div>
             </div>
 
@@ -115,15 +123,18 @@ const MyNavbar = () => {
         aria-hidden="true"
       />
 
-      <aside className={`sidebar ${sidebarOpen ? "open" : ""}`} aria-label="Mobile navigation">
+      <aside
+        className={`sidebar ${sidebarOpen ? "open" : ""}`}
+        aria-label="Mobile navigation"
+      >
         <div className="sidebar-header">
           <div className="sidebar-logo-wrapper">
             <img src={logo} alt="Shehab Hany" loading="lazy" />
             <div className="sidebar-logo-glow"></div>
           </div>
-          <button 
-            className="sidebar-close" 
-            onClick={closeSidebar} 
+          <button
+            className="sidebar-close"
+            onClick={closeSidebar}
             aria-label="Close navigation menu"
           >
             ✕
@@ -137,8 +148,8 @@ const MyNavbar = () => {
               style={{ "--item-index": index }}
               className={sidebarOpen ? "animate-in" : ""}
             >
-              <a 
-                href={link.href} 
+              <a
+                href={link.href}
                 className={`sidebar-link ${activeSection === link.href ? "active" : ""}`}
                 onClick={closeSidebar}
               >

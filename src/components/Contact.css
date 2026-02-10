@@ -54,20 +54,6 @@
   margin-bottom: 3rem;
 }
 
-.title-tag {
-  display: inline-block;
-  font-family: 'Courier New', monospace;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: var(--accent-primary);
-  background: color-mix(in srgb, var(--accent-primary) 12%, transparent);
-  padding: 3px 12px;
-  border-radius: 20px;
-  margin-bottom: 0.6rem;
-  border: 1px solid color-mix(in srgb, var(--accent-primary) 25%, transparent);
-}
-
 .section-title {
   font-size: clamp(1.8rem, 4vw, 2.6rem);
   font-weight: 800;
@@ -163,7 +149,6 @@
   margin-bottom: 0.9rem;
 }
 
-/* ── Social Pills ── */
 .social-row {
   display: flex;
   flex-wrap: wrap;
@@ -197,7 +182,6 @@
   box-shadow: 0 4px 14px color-mix(in srgb, var(--sc) 40%, transparent);
 }
 
-/* GitHub dark mode */
 [data-theme="dark"] .social-pill[aria-label="GitHub"] {
   color: #ddd;
   background: color-mix(in srgb, #aaa 12%, transparent);
@@ -208,11 +192,6 @@
   color: #111;
 }
 
-/* ═══════════════════════════════════════════
-   FORM CARD (RIGHT)
-═══════════════════════════════════════════ */
-
-/* Input with animated underbar */
 .input-wrap {
   position: relative;
 }
@@ -245,7 +224,6 @@
   resize: none;
 }
 
-/* Animated focus bar */
 .input-focus-bar {
   position: absolute;
   bottom: 0;
@@ -262,7 +240,6 @@
   width: 100%;
 }
 
-/* ── Send Button ── */
 .send-btn {
   display: flex;
   align-items: center;
@@ -302,9 +279,6 @@
   transform: translateX(4px) translateY(-2px) rotate(-30deg);
 }
 
-/* ═══════════════════════════════════════════
-   RESPONSIVE
-═══════════════════════════════════════════ */
 @media (max-width: 991px) {
   .info-card {
     margin-bottom: 0;
@@ -322,7 +296,7 @@
   }
 
   .social-pill span {
-    display: none; /* icon only on very small screens */
+    display: none; 
   }
 
   .social-pill {

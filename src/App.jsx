@@ -33,12 +33,12 @@ function App() {
 
       <Suspense fallback={<Loader />}>
         <Hero />
+        <About />
+        <Skills />
         <Education/>
         <WorkExperience />
         <Projects />
         <Certificates />
-        <Skills />
-        <About />
         <Contact />
         <Footer />
       </Suspense>
