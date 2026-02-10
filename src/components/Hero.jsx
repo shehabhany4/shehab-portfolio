@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import "./Hero.css";
 import heroImage from "../assets/ProfileImg.jpg";
+import { FaLaptopCode } from "react-icons/fa";
+
 
 const Hero = () => {
   const sectionRef = useRef(null);
@@ -24,14 +26,14 @@ const Hero = () => {
       <Container>
         <Row className="align-items-center">
           <Col md={6} className="hero-text">
-            <p className="hello-text">👋 Hello I am a</p>
+            <p className="hello-text">👋 Hello, I am </p>
 
             <h1 className="hero-title">
-              Front-End Web Developer <span className="code-icon">{"</>"}</span>
+             Shehab Hany Helmy <span><FaLaptopCode/></span>
             </h1>
 
             <p className="hero-desc">
-              Hi, I’m Shehab Hany, a Frontend Developer with 1+ year of hands-on
+              Frontend Developer with 1+ year of hands-on
               experience. Completed 10+ frontend projects and gained real-world
               experience through 3+ internships. Specialized in building modern,
               responsive, and user-friendly web interfaces using HTML, CSS,

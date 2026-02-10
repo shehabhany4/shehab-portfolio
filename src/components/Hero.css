@@ -2,7 +2,6 @@
   padding: 17vh 0;
   margin: 0.6%;
 
-  /* ---------- hidden states ---------- */
   .hello-text {
     opacity: 0;
     transform: translateY(30px);
@@ -33,7 +32,6 @@
                 border-color 0.4s ease;
   }
 
-  /* ---------- revealed states ---------- */
   &.show {
     .hello-text {
       opacity: 1;
@@ -57,7 +55,6 @@
     }
   }
 
-  /* ---------- base styles ---------- */
   .hello-text {
     color: var(--accent-hello);
     font-weight: 600;
@@ -70,13 +67,6 @@
     margin-bottom: 20px;
     color: var(--text-primary);
     text-shadow: 1px 1.5px 2px var(--hero-title-shadow);
-  }
-
-  .code-icon {
-    padding: 5px 10px;
-    border-radius: 8px;
-    font-size: 28px;
-    color: var(--accent-hello);
   }
 
   .hero-desc {
