@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import "./Hero.css";
+import heroImage from "../assets/ProfileImg.jpg";
 import {
   FaLaptopCode,
   FaFacebook,
@@ -7,9 +10,6 @@ import {
   FaInstagram,
   FaWhatsapp,
 } from "react-icons/fa";
-import { HiSparkles } from "react-icons/hi";
-import "./Hero.css";
-import heroImage from "../assets/ProfileImg.jpg";
 
 const socialLinks = [
   {
@@ -45,113 +45,87 @@ const socialLinks = [
 ];
 
 const Hero = () => {
-  const [visible, setVisible] = useState(false);
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      setVisible(true);
-    }, 100);
+      setIsVisible(true);
+    }, 300);
     return () => clearTimeout(timeout);
   }, []);
 
   return (
     <section
+      ref={sectionRef}
       id="home"
-      className={`hero-section ${visible ? "hero-section--visible" : ""}`}
+      className={`hero-section ${isVisible ? "show" : ""}`}
     >
-      {/* Background */}
-      <div className="hero-bg" aria-hidden="true">
-        <div className="hero-orb hero-orb--1" />
-        <div className="hero-orb hero-orb--2" />
-        <div className="hero-grid" />
-      </div>
-
-      <div className="hero-container">
-        <div className="hero-content">
-          {/* Text Side */}
-          <div className="hero-text">
-            {/* Badge */}
-            <div className="hero-badge">
-              <span className="hero-badge__pulse" />
-              <HiSparkles />
-              <span>Available for work</span>
-            </div>
-
-            {/* Greeting */}
-            <div className="hero-greeting">
-              <span className="hero-greeting__wave">👋</span>
-              <span>Hello, I'm</span>
-            </div>
-
-            {/* Name */}
-            <h1 className="hero-name">
-              Shehab Hany
-              <span className="hero-name__dot">.</span>
+      <Container fluid className="px-0">
+        <Row className="align-items-center mx-0">
+          <Col md={6} className="hero-text px-4">
+          <div className="available-badge">
+                <span className="badge-dot"></span>
+                <span className="badge-icon">✨</span>
+                <span className="badge-text">Available for work</span>
+              </div>
+            <p className="hello-text"> Hello, I am </p>
+            <h1 className="hero-title">
+              Shehab Hany Helmy{" "}
+              <span className="title-icon">
+                <FaLaptopCode />
+              </span>
             </h1>
-
-            {/* Title */}
-            <div className="hero-title">
-              <FaLaptopCode className="hero-title__icon" />
-              <h2>Frontend Developer</h2>
-            </div>
-
-            {/* Description */}
-            <p className="hero-description">
-              Crafting modern, responsive web interfaces with clean code and
-              pixel-perfect precision. Building scalable, production-ready
-              projects.
+            <p className="hero-desc">
+              Frontend Developer crafting modern, responsive, and user-friendly
+              web interfaces. Focused on clean code, performance, and
+              pixel-perfect, scalable, production-ready projects.
             </p>
-
-            {/* CTA Buttons */}
-            <div className="hero-actions">
-              <a href="#work" className="hero-btn hero-btn--primary">
-                View My Work
-              </a>
-              <a href="#contact" className="hero-btn hero-btn--secondary">
-                Get In Touch
-              </a>
-            </div>
-          </div>
-
-          {/* Image Side */}
-          <div className="hero-visual">
-            <div className="hero-image-wrapper">
-              {/* Rings */}
-              <div className="hero-ring hero-ring--1" />
-              <div className="hero-ring hero-ring--2" />
-              
-              {/* Glow */}
-              <div className="hero-glow" />
-
-              {/* Image */}
-              <div className="hero-image">
-                <img src={heroImage} alt="Shehab Hany" />
+            <div className="hero-buttons">
+                <a href="#projects" className="btn-primary">
+                  View My Work
+                </a>
+                <a href="#contact" className="btn-secondary">
+                  Get In Touch
+                </a>
+              </div>
+          </Col>
+          <Col md={6} className="text-center px-4">
+            <div className="image-col-wrapper">
+              <div className="image-wrapper">
+                <div className="img-ring img-ring--outer"></div>
+                <div className="img-ring img-ring--middle"></div>
+                <div className="img-ring img-ring--inner"></div>
+                <div className="img-glow"></div>
+                <div className="img-particles">
+                  <span className="particle particle--1"></span>
+                  <span className="particle particle--2"></span>
+                </div>
+                <img src={heroImage} alt="Shehab" loading="lazy" />
+              </div>
+              <div className="social-strip">
+                {socialLinks.map((s, i) => (
+                   <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className="social-icon"
+                    style={{
+                      "--social-color": s.color,
+                      "--social-delay": `${0.55 + i * 0.1}s`,
+                    }}
+                  >
+                    {s.icon}
+                    <span className="social-tooltip">{s.label}</span>
+                  </a>
+                ))}
               </div>
             </div>
-
-            {/* Social Links */}
-            <div className="hero-social">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                  className="hero-social__link"
-                  style={{
-                    "--social-color": social.color,
-                    "--social-delay": `${0.8 + index * 0.1}s`,
-                  }}
-                >
-                  {social.icon}
-                  <span className="hero-social__tooltip">{social.label}</span>
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     </section>
   );
 };
