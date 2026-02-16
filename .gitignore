@@ -1,4 +1,20 @@
-# Logs
+# ============================================
+# ENVIRONMENT VARIABLES - CRITICAL FOR SECURITY
+# ============================================
+.env
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production
+.env.production.local
+.env.staging
+.env.*.local
+
+# ============================================
+# LOGS
+# ============================================
 logs
 *.log
 npm-debug.log*
@@ -7,18 +23,189 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# ============================================
+# DEPENDENCIES
+# ============================================
 node_modules
+/.pnp
+.pnp.js
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# ============================================
+# BUILD OUTPUTS
+# ============================================
 dist
 dist-ssr
-*.local
+build
+out
+.next
+.nuxt
+.cache
+.parcel-cache
+.vercel
+.netlify
+.turbo
 
-# Editor directories and files
+# ============================================
+# TESTING
+# ============================================
+coverage
+*.lcov
+.nyc_output
+/test-results/
+/playwright-report/
+/playwright/.cache/
+jest-results/
+
+# ============================================
+# OS FILES
+# ============================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ============================================
+# EDITOR DIRECTORIES AND FILES
+# ============================================
 .vscode/*
 !.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+.atom/
+.brackets.json
+
+# ============================================
+# TEMPORARY FILES
+# ============================================
+*.local
+*.tmp
+*.temp
+.temp/
+.tmp/
+*.bak
+*.backup
+*~
+
+# ============================================
+# PACKAGE MANAGER LOCKS (Optional)
+# Uncomment these if you don't want to commit lock files
+# ============================================
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# ============================================
+# TYPESCRIPT
+# ============================================
+*.tsbuildinfo
+typings/
+
+# ============================================
+# OPTIONAL CACHES
+# ============================================
+.npm
+.eslintcache
+.stylelintcache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# ============================================
+# NODE REPL HISTORY
+# ============================================
+.node_repl_history
+
+# ============================================
+# NPM PACKAGES
+# ============================================
+*.tgz
+
+# ============================================
+# STORYBOOK
+# ============================================
+storybook-static
+
+# ============================================
+# SENTRY
+# ============================================
+.sentryclirc
+
+# ============================================
+# DATABASE
+# ============================================
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+
+# ============================================
+# API KEYS & SECRETS - EXTRA SAFETY
+# ============================================
+*secret*
+*private*
+*.key
+*.pem
+*.p12
+*.pfx
+config/secrets.js
+config/secrets.json
+credentials.json
+
+# ============================================
+# FIREBASE
+# ============================================
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
+# ============================================
+# AWS
+# ============================================
+.aws/
+.elasticbeanstalk/
+
+# ============================================
+# DOCKER
+# ============================================
+docker-compose.override.yml
+
+# ============================================
+# MISC
+# ============================================
+.docusaurus
+.serverless/
+.fusebox/
+.dynamodb/
+.tern-port
+.vuepress/dist
+.umi
+.umi-production
+.umi-test
