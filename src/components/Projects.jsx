@@ -5,7 +5,7 @@ import {
 } from "react-icons/fa";
 
 import project1Image from "../assets/Projects/EBook.png";
-import project2Image from "../assets/Projects/calculator.png";
+import project2Image from "../assets/Projects/studying.png";
 import project3Image from "../assets/Projects/MiniBrand.jpg";
 import project4Image from "../assets/Projects/removeback.png";
 import project5Image from "../assets/Projects/cruds.png";
@@ -30,20 +30,21 @@ const projects = [
       { icon: <FaBootstrap />, name: "Bootstrap", color: "#7952B3" },
     ],
   },
-  {
-    id: 2,
-    title: "Calculator App",
-    description: "Clean functional calculator with keyboard support and history log.",
-    image: project2Image,
-    github: "https://github.com/shehabhany4/sky.stars",
-    demo: "https://shehabhany4.github.io/CodeAlpha_Calculator/",
-    category: "Utility",
-    tools: [
-      { icon: <FaHtml5 />,  name: "HTML",        color: "#E34F26" },
-      { icon: <FaCss3Alt />, name: "CSS",         color: "#1572B6" },
-      { icon: <FaJs />,     name: "JavaScript",   color: "#F7DF1E" },
-    ],
-  },
+{
+  id: 2,
+  title: "Studying Online is Much Easier",
+  description: "A modern and responsive studying online platform built with clean UI and smooth experience.",
+  image: project2Image,
+  github: "https://github.com/shehabhany4/Studying-Online",
+  demo: "https://shehabhany4.github.io/Studying-Online/",
+  category: "Web App",
+  tools: [
+    { icon: <FaHtml5 />,    name: "HTML",       color: "#E34F26" },
+    { icon: <FaCss3Alt />,  name: "CSS",        color: "#1572B6" },
+    { icon: <FaJs />,       name: "JavaScript", color: "#F7DF1E" },
+    { icon: <FaBootstrap />,name: "Bootstrap",  color: "#7952B3" },
+  ],
+},
   {
     id: 3,
     title: "Landing Page",
