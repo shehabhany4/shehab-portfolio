@@ -12,6 +12,7 @@ import {
   FaGithub,
   FaInstagram,
   FaWhatsapp,
+  FaComments,
 } from "react-icons/fa";
 
 const translations = { en, ar };
@@ -29,10 +30,22 @@ const Hero = () => {
   const t = translations[language].hero;
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [socialOpen, setSocialOpen] = useState(false);
+  const socialRef = useRef(null);
 
   useEffect(() => {
     const timeout = setTimeout(() => setIsVisible(true), 300);
     return () => clearTimeout(timeout);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (socialRef.current && !socialRef.current.contains(e.target)) {
+        setSocialOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
@@ -62,6 +75,7 @@ const Hero = () => {
               <a href="#contact" className="btn-secondary">{t.getInTouch}</a>
             </div>
           </Col>
+
           <Col md={6} className="text-center px-4">
             <div className="image-col-wrapper">
               <div className="image-wrapper">
@@ -73,22 +87,38 @@ const Hero = () => {
                   <span className="particle particle--2"></span>
                 </div>
                 <img src={heroImage} alt="Shehab" loading="lazy" />
-              </div>
-              <div className="social-strip">
-                {socialLinks.map((s, i) => (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={s.label}
-                    className="social-icon"
-                    style={{ "--social-color": s.color, "--social-delay": `${0.55 + i * 0.1}s` }}
+
+                <div
+                  className={`social-fab-wrapper ${socialOpen ? "open" : ""}`}
+                  ref={socialRef}
+                >
+                  {socialLinks.map((s, i) => (
+                    <a
+                      key={s.label}
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={s.label}
+                      className="social-fan-item"
+                      style={{
+                        "--social-color": s.color,
+                        "--fan-index": i,
+                      }}
+                      onClick={() => setSocialOpen(false)}
+                    >
+                      {s.icon}
+                      <span className="fan-tooltip">{s.label}</span>
+                    </a>
+                  ))}
+
+                  <button
+                    className="social-fab-btn"
+                    onClick={() => setSocialOpen(!socialOpen)}
+                    aria-label="Toggle social links"
                   >
-                    {s.icon}
-                    <span className="social-tooltip">{s.label}</span>
-                  </a>
-                ))}
+                    <FaComments className={`fab-icon ${socialOpen ? "rotated" : ""}`} />
+                  </button>
+                </div>
               </div>
             </div>
           </Col>

@@ -249,6 +249,11 @@
     background: linear-gradient(270deg, var(--accent-primary), transparent);
   }
 
+  /* ✅ RTL: hero-buttons تتجمع لليمين */
+  [dir="rtl"] & .hero-buttons {
+    justify-content: flex-end;
+  }
+
   .hero-buttons {
     display: flex;
     gap: 1rem;
@@ -351,26 +356,16 @@
       display: block;
     }
 
-    &:hover {
-      transform: scale(1.02);
+  }
 
-      img {
-        transform: scale(1.06);
-        border-color: var(--accent-hello);
-        box-shadow: 
-          0 15px 50px color-mix(in srgb, var(--accent-hello) 40%, rgba(0,0,0,0.3)),
-          0 0 80px color-mix(in srgb, var(--accent-hello) 20%, transparent);
-      }
-
-      .img-ring--outer {
-        animation-play-state: paused;
-        transform: rotate(0deg) scale(1.05);
-      }
-      .img-glow {
-        opacity: 0.9;
-        transform: scale(1.15);
-      }
-    }
+  /* ✅ الهوفر على الصورة نفسها بس */
+  .image-wrapper img:hover {
+    transform: scale(1.06);
+    border-color: var(--accent-hello);
+    box-shadow: 
+      0 15px 50px color-mix(in srgb, var(--accent-hello) 40%, rgba(0,0,0,0.3)),
+      0 0 80px color-mix(in srgb, var(--accent-hello) 20%, transparent);
+    cursor: pointer;
   }
 
   .img-ring {
@@ -464,126 +459,141 @@
     }
   }
 
-  .social-strip {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.8rem;
-  }
-
-  .social-icon {
-    position: relative;
+  /* ===== Social Fan Menu ===== */
+  .social-fab-wrapper {
+    position: absolute;
+    bottom: 18px;
+    right: 18px;
+    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 13px;
-    font-size: 1.3rem;
+  }
+
+  .social-fab-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-hello));
+    border: none;
     color: #fff;
-    background-color: var(--social-color);
-    box-shadow: 
-      0 4px 12px color-mix(in srgb, var(--social-color) 45%, transparent),
-      0 0 25px color-mix(in srgb, var(--social-color) 20%, transparent);
-    text-decoration: none;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    box-shadow:
+      0 4px 16px color-mix(in srgb, var(--accent-primary) 45%, transparent),
+      0 0 0 0 color-mix(in srgb, var(--accent-primary) 30%, transparent);
     transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    overflow: hidden;
-
-    &::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    &:hover {
-      transform: scale(1.2) translateY(-3px) rotate(5deg);
-      box-shadow: 
-        0 8px 24px color-mix(in srgb, var(--social-color) 60%, transparent),
-        0 0 40px color-mix(in srgb, var(--social-color) 30%, transparent);
-      filter: brightness(1.15);
-
-      &::before {
-        opacity: 1;
-      }
-    }
-
-    .social-tooltip {
-      position: absolute;
-      right: calc(100% + 12px);
-      top: 50%;
-      transform: translateY(-50%) translateX(8px);
-      background: var(--social-color);
-      color: #fff;
-      font-size: 0.73rem;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 7px;
-      white-space: nowrap;
-      pointer-events: none;
-      opacity: 0;
-      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-
-      &::after {
-        content: '';
-        position: absolute;
-        left: 100%;
-        top: 50%;
-        transform: translateY(-50%);
-        border: 6px solid transparent;
-        border-left-color: var(--social-color);
-      }
-    }
-
-    &:hover .social-tooltip {
-      opacity: 1;
-      transform: translateY(-50%) translateX(0);
-    }
+    animation: fab-pulse 3s ease-in-out infinite;
   }
 
-  /* ✅ FIX 5: Social tooltip في RTL */
-  [dir="rtl"] & .social-icon .social-tooltip {
-    right: auto;
-    left: calc(100% + 12px);
-    transform: translateY(-50%) translateX(-8px);
-
-    &::after {
-      left: auto;
-      right: 100%;
-      border-left-color: transparent;
-      border-right-color: var(--social-color);
-    }
+  @keyframes fab-pulse {
+    0%, 100% { box-shadow: 0 4px 16px color-mix(in srgb, var(--accent-primary) 45%, transparent), 0 0 0 0 color-mix(in srgb, var(--accent-primary) 30%, transparent); }
+    50% { box-shadow: 0 4px 16px color-mix(in srgb, var(--accent-primary) 45%, transparent), 0 0 0 10px color-mix(in srgb, var(--accent-primary) 0%, transparent); }
   }
 
-  [dir="rtl"] & .social-icon:hover .social-tooltip {
-    transform: translateY(-50%) translateX(0);
+  .social-fab-btn:hover {
+    transform: scale(1.1);
+    animation: none;
+    box-shadow: 0 6px 24px color-mix(in srgb, var(--accent-primary) 60%, transparent);
   }
 
-  @media (max-width: 768px) {
-    [dir="rtl"] & .social-icon .social-tooltip {
-      right: auto;
-      left: 50%;
-      top: auto;
-      bottom: calc(100% + 10px);
-      transform: translateX(-50%) translateY(6px);
+  .fab-icon {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
 
-      &::after {
-        right: auto;
-        left: 50%;
-        top: 100%;
-        transform: translateX(-50%);
-        border: 6px solid transparent;
-        border-top-color: var(--social-color);
-        border-right-color: transparent;
-      }
-    }
+  .fab-icon.rotated {
+    transform: rotate(45deg);
+  }
 
-    [dir="rtl"] & .social-icon:hover .social-tooltip {
-      transform: translateX(-50%) translateY(0);
-    }
+  .social-fan-item {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: var(--social-color);
+    color: #fff;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 14px color-mix(in srgb, var(--social-color) 50%, transparent);
+    opacity: 0;
+    transform: translate(0, 0) scale(0.4);
+    transition:
+      opacity 0.3s ease,
+      transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow 0.3s ease,
+      filter 0.3s ease;
+    transition-delay: 0s;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* الأيقونات تطلع فوق بشكل arc */
+  .social-fab-wrapper.open .social-fan-item:nth-child(1) {
+    transform: translate(-105px, -20px) scale(1);
+    opacity: 1;
+    pointer-events: all;
+    transition-delay: 0.00s;
+  }
+  .social-fab-wrapper.open .social-fan-item:nth-child(2) {
+    transform: translate(-85px, -75px) scale(1);
+    opacity: 1;
+    pointer-events: all;
+    transition-delay: 0.05s;
+  }
+  .social-fab-wrapper.open .social-fan-item:nth-child(3) {
+    transform: translate(-45px, -115px) scale(1);
+    opacity: 1;
+    pointer-events: all;
+    transition-delay: 0.10s;
+  }
+  .social-fab-wrapper.open .social-fan-item:nth-child(4) {
+    transform: translate(10px, -130px) scale(1);
+    opacity: 1;
+    pointer-events: all;
+    transition-delay: 0.15s;
+  }
+  .social-fab-wrapper.open .social-fan-item:nth-child(5) {
+    transform: translate(65px, -115px) scale(1);
+    opacity: 1;
+    pointer-events: all;
+    transition-delay: 0.20s;
+  }
+
+  .social-fan-item:hover {
+    filter: brightness(1.15);
+    box-shadow: 0 6px 20px color-mix(in srgb, var(--social-color) 65%, transparent);
+    transform: scale(1.15) !important;
+  }
+
+  /* Tooltip فوق كل أيقونة */
+  .fan-tooltip {
+    position: absolute;
+    bottom: calc(100% + 7px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.2s ease;
+  }
+
+  .social-fan-item:hover .fan-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
   }
 }
 
@@ -619,30 +629,21 @@
       padding: 20px;
     }
 
-    .social-strip {
-      flex-direction: row;
-      gap: 1rem;
+    .social-fab-wrapper {
+      bottom: 12px;
+      right: 12px;
     }
 
-    .social-icon .social-tooltip {
-      right: auto;
-      top: auto;
-      bottom: calc(100% + 10px);
-      left: 50%;
-      transform: translateX(-50%) translateY(6px);
-
-      &::after {
-        left: 50%;
-        top: 100%;
-        transform: translateX(-50%);
-        border: 6px solid transparent;
-        border-top-color: var(--social-color);
-        border-left-color: transparent;
-      }
+    .social-fab-btn {
+      width: 42px;
+      height: 42px;
+      font-size: 1rem;
     }
 
-    .social-icon:hover .social-tooltip {
-      transform: translateX(-50%) translateY(0);
+    .social-fan-item {
+      width: 36px;
+      height: 36px;
+      font-size: 0.95rem;
     }
 
     .hello-text {
