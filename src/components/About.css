@@ -165,6 +165,19 @@
 /* ✅ FIX 4: info-item في RTL */
 [dir="rtl"] .info-item {
   flex-direction: row-reverse;
+}
+
+[dir="rtl"] .info-content {
+  align-items: flex-end;
+  text-align: right;
+}
+
+[dir="rtl"] .info-label {
+  text-align: right;
+}
+
+[dir="rtl"] .info-value {
+  direction: ltr; /* عشان الإيميل والتليفون يفضلوا صح */
   text-align: right;
 }
 
