@@ -150,7 +150,6 @@ body[data-theme="dark"] {
 
 
 
-/* ==================== PROFESSIONAL LOADER ==================== */
 .professional-loader {
   position: fixed;
   inset: 0;
@@ -163,7 +162,6 @@ body[data-theme="dark"] {
   transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
-/* Loader Content Container */
 .loader-content {
   position: relative;
   z-index: 2;
@@ -185,54 +183,15 @@ body[data-theme="dark"] {
   }
 }
 
-/* ==================== ANIMATED ICON ==================== */
 .loader-icon {
   position: relative;
-  width: 120px;
+  width: 1200px;
   height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Rotating Rings */
-.icon-ring {
-  position: absolute;
-  border-radius: 50%;
-  border: 3px solid transparent;
-}
-
-.ring-1 {
-  inset: 0;
-  border-top-color: var(--accent-primary);
-  border-right-color: var(--accent-primary);
-  animation: spin 1.5s linear infinite;
-}
-
-.ring-2 {
-  inset: 15px;
-  border-bottom-color: var(--accent-hello);
-  border-left-color: var(--accent-hello);
-  animation: spin-reverse 2s linear infinite;
-}
-
-.ring-3 {
-  inset: 30px;
-  border-top-color: var(--accent-primary);
-  border-right-color: var(--accent-primary);
-  animation: spin 2.5s linear infinite;
-  opacity: 0.5;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-@keyframes spin-reverse {
-  to { transform: rotate(-360deg); }
-}
-
-/* Center Icon */
 .icon-center {
   width: 50px;
   height: 50px;
@@ -270,7 +229,6 @@ body[data-theme="dark"] {
   }
 }
 
-/* ==================== LOADING TEXT ==================== */
 .loader-text {
   display: flex;
   align-items: center;
@@ -288,7 +246,6 @@ body[data-theme="dark"] {
   letter-spacing: 0.05em;
 }
 
-/* Animated Dots */
 .loading-dots {
   display: flex;
   gap: 0.4rem;
@@ -327,7 +284,6 @@ body[data-theme="dark"] {
   }
 }
 
-/* ==================== PROGRESS BAR ==================== */
 .loader-progress {
   width: 200px;
   height: 4px;
@@ -359,7 +315,6 @@ body[data-theme="dark"] {
   }
 }
 
-/* ==================== BACKGROUND EFFECTS ==================== */
 .loader-bg-effect {
   position: absolute;
   border-radius: 50%;

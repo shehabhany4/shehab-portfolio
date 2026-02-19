@@ -1,0 +1,211 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "education": "Education",
+    "experience": "Experience",
+    "projects": "Projects",
+    "certificates": "Certificates",
+    "contact": "Contact"
+  },
+  "hero": {
+    "available": "Available for work",
+    "hello": "Hello, I am",
+    "user":"Shehab Hany Helmy",
+    "desc": "Frontend Developer crafting modern, responsive, and user-friendly web interfaces. Focused on clean code, performance, and pixel-perfect, scalable, production-ready projects.",
+    "viewWork": "View My Work",
+    "getInTouch": "Get In Touch"
+  },
+  "about": {
+    "title": "About Me",
+    "bio": "I'm a passionate Frontend Developer from Egypt with 1+ year of hands-on experience crafting modern, responsive web interfaces. I've completed 10+ projects and gained real-world experience through 3+ internships. I love turning ideas into clean, performant, and pixel-perfect experiences using HTML, CSS, JavaScript, Bootstrap, and React.",
+    "birthday": "Birthday",
+    "location": "Location",
+    "locationValue": "Menofeya, Egypt",
+    "email": "Email",
+    "phone": "Phone",
+    "languages": "Languages",
+    "languagesValue": "Arabic & English",
+    "freelance": "Freelance",
+    "available": "Available",
+    "viewCV": "View CV"
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "Technologies and tools I work with",
+    "expertise": "Expertise",
+    "frontend": "Frontend Development",
+    "tools": "Tools & Technologies",
+    "cs": "CS Fundamentals",
+    "soft": "Soft Skills",
+    "skills": "skills"
+  },
+  "education": {
+    "title": "Education",
+    "subtitle": "Academic foundation & professional development",
+    "background": "Background",
+    "university": "Benha University",
+    "egypt": "Egypt",
+    "degree": "B.Sc.",
+    "degreeLabel": "Bachelor of Science in",
+    "degreeName": "Computer Science &",
+    "degreeAi": "Artificial Intelligence",
+    "coursework": "Coursework",
+    "activity": "Student Activity",
+    "bootcamp": "Front-End Bootcamp",
+    "gdg": "Google Developer Groups – Benha University",
+    "bootcampDate": "Feb 2–6, 2025",
+    "bootcampDesc": "Intensive 36-hour bootcamp covering technical workshops and hands-on activities in modern frontend development.",
+    "hours": "36 Hours",
+    "certificate": "Certificate",
+    "handson": "Hands-on",
+    "courses": [
+      "Data Structures & Algorithms",
+      "Object-Oriented Programming",
+      "Database Systems",
+      "Software Engineering",
+      "Operating Systems",
+      "Computer Networks",
+      "Artificial Intelligence",
+      "Web Development"
+    ]
+  },
+  "experience": {
+    "title": "Work Experience",
+    "subtitle": "My professional journey and learning experiences",
+    "journey": "Journey",
+    "current": "Current",
+    "showMore": "Show More",
+    "showLess": "Show Less",
+    "jobs": [
+      {
+        "role": "Frontend Web Developer Intern",
+        "company": "PureSoft Company",
+        "duration": "Jan 2026 - Present",
+        "description": [
+          "Developed responsive user interfaces using HTML, CSS, and JavaScript.",
+          "Implemented reusable UI components and clean code practices.",
+          "Collaborated with team members using Git & GitHub.",
+          "Translated UI/UX designs into functional web pages.",
+          "Improved frontend performance and user experience."
+        ]
+      },
+      {
+        "role": "React Frontend Developer Trainee",
+        "company": "DEPI & MCIT Training Program",
+        "duration": "November 2025 - Present",
+        "description": [
+          "Built projects using React, Bootstrap, and RESTful APIs.",
+          "Learned best practices in state management and component structuring.",
+          "Worked on team projects following agile methodology."
+        ]
+      },
+      {
+        "role": "Front-End React Training",
+        "company": "ITI Training Program",
+        "duration": "Summer 2025",
+        "description": [
+          "Mastered React.js fundamentals including component lifecycle, Hooks (useState, useEffect, useContext).",
+          "Integrated REST APIs efficiently into React applications."
+        ]
+      },
+      {
+        "role": "Full Stack Training",
+        "company": "NTI & ITIDA Training Program",
+        "duration": "Summer 2025",
+        "description": [
+          "Built comprehensive full-stack web applications using HTML5, CSS3, JavaScript for frontend.",
+          "Implemented backend technologies for server-side logic."
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "title": "My Projects",
+    "subtitle": "A curated showcase of interfaces, tools & experiments",
+    "selectedWork": "Selected Work",
+    "viewLive": "View Live",
+    "github": "GitHub",
+    "liveDemo": "Live Demo",
+    "items": [
+      {
+        "title": "E-Book Store",
+        "description": "Modern e-commerce platform for digital books with cart & filtering.",
+        "category": "E-Commerce"
+      },
+      {
+        "title": "Studying Online is Much Easier",
+        "description": "A modern and responsive studying online platform built with clean UI and smooth experience.",
+        "category": "Web App"
+      },
+      {
+        "title": "Landing Page",
+        "description": "Responsive modern landing page with smooth scroll & animations.",
+        "category": "UI Design"
+      },
+      {
+        "title": "Remove Background",
+        "description": "AI-powered background removal tool with instant preview.",
+        "category": "AI Tool"
+      },
+      {
+        "title": "CRUD Application",
+        "description": "Full-featured product management system with local storage.",
+        "category": "Web App"
+      },
+      {
+        "title": "Burger Shop",
+        "description": "Restaurant website with modern UI, menu showcase & ordering flow.",
+        "category": "Restaurant"
+      }
+    ]
+  },
+  "certificates": {
+    "title": "Certificates",
+    "subtitle": "A collection of earned recognitions and professional milestones",
+    "achievements": "ACHIEVEMENTS",
+    "frontend": "Frontend",
+    "internships": "Internships",
+    "others": "Others",
+    "view": "View Certificate"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Have a project in mind or just want to say hello? I'd love to hear from you.",
+    "letsConnect": "Let's Connect",
+    "openTo": "I'm currently open to freelance opportunities and full-time roles. Whether it's a question or a hello – my inbox is always open!",
+    "namePlaceholder": "Your Name",
+    "emailPlaceholder": "Your Email",
+    "subjectPlaceholder": "Subject",
+    "messagePlaceholder": "Your Message",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "successTitle": "Message sent successfully! 😍",
+    "successText": "Thank you for reaching out. I'll get back to you soon!",
+    "errorTitle": "Oops! Something went wrong ❌",
+    "errorText": "Please try again or reach out via email directly.",
+    "findMe": "Find me on",
+    "nameError": "Name must be at least 2 characters",
+    "emailError": "Please enter a valid email address",
+    "messageError": "Message must be at least 10 characters"
+  },
+  "footer": {
+    "tagline": "Frontend Developer crafting modern, responsive & user-friendly web experiences.",
+    "quickLinks": "Quick Links",
+    "more": "More",
+    "rights": "All rights reserved.",
+    "madeWith": "Made with",
+    "inEgypt": "in Egypt 🇪🇬",
+    "links": {
+      "home": "Home",
+      "about": "About",
+      "skills": "Skills",
+      "education": "Education",
+      "experience": "Experience",
+      "projects": "Projects",
+      "certificates": "Certificates",
+      "contact": "Contact"
+    }
+  }
+}

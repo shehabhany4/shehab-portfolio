@@ -3,106 +3,41 @@ import {
   FaHtml5, FaCss3Alt, FaJs, FaBootstrap, FaReact,
   FaGithub, FaExternalLinkAlt, FaArrowRight,
 } from "react-icons/fa";
-
 import project1Image from "../assets/Projects/EBook.png";
 import project2Image from "../assets/Projects/studying.png";
 import project3Image from "../assets/Projects/MiniBrand.jpg";
 import project4Image from "../assets/Projects/removeback.png";
 import project5Image from "../assets/Projects/cruds.png";
 import project6Image from "../assets/Projects/burger.png";
-
 import "./Projects.css";
+import { useLanguage } from "./LanguageContext";
+import en from "../i18n/en.json";
+import ar from "../i18n/ar.json";
 
-const projects = [
-  {
-    id: 1,
-    title: "E-Book Store",
-    description: "Modern e-commerce platform for digital books with cart & filtering.",
-    image: project1Image,
-    github: "https://github.com/shehabhany4/Ebook_Store",
-    demo: "https://shehabhany4.github.io/Ebook_Store/",
-    category: "E-Commerce",
-    tools: [
-      { icon: <FaHtml5 />, name: "HTML",       color: "#E34F26" },
-      { icon: <FaCss3Alt />, name: "CSS",       color: "#1572B6" },
-      { icon: <FaJs />,      name: "JavaScript", color: "#F7DF1E" },
-      { icon: <FaReact />,   name: "React",      color: "#61DAFB" },
-      { icon: <FaBootstrap />, name: "Bootstrap", color: "#7952B3" },
-    ],
-  },
-{
-  id: 2,
-  title: "Studying Online is Much Easier",
-  description: "A modern and responsive studying online platform built with clean UI and smooth experience.",
-  image: project2Image,
-  github: "https://github.com/shehabhany4/Studying-Online",
-  demo: "https://shehabhany4.github.io/Studying-Online/",
-  category: "Web App",
-  tools: [
-    { icon: <FaHtml5 />,    name: "HTML",       color: "#E34F26" },
-    { icon: <FaCss3Alt />,  name: "CSS",        color: "#1572B6" },
-    { icon: <FaJs />,       name: "JavaScript", color: "#F7DF1E" },
-    { icon: <FaBootstrap />,name: "Bootstrap",  color: "#7952B3" },
-  ],
-},
-  {
-    id: 3,
-    title: "Landing Page",
-    description: "Responsive modern landing page with smooth scroll & animations.",
-    image: project3Image,
-    github: "https://github.com/shehabhany4/Mini_Iti",
-    demo: "https://shehabhany4.github.io/Mini_Iti/",
-    category: "UI Design",
-    tools: [
-      { icon: <FaHtml5 />,    name: "HTML",      color: "#E34F26" },
-      { icon: <FaCss3Alt />,  name: "CSS",       color: "#1572B6" },
-      { icon: <FaBootstrap />, name: "Bootstrap", color: "#7952B3" },
-    ],
-  },
-  {
-    id: 4,
-    title: "Remove Background",
-    description: "AI-powered background removal tool with instant preview.",
-    image: project4Image,
-    github: "https://github.com/shehabhany4/Remove_background",
-    demo: "https://shehabhany4.github.io/Remove_background/",
-    category: "AI Tool",
-    tools: [
-      { icon: <FaHtml5 />,  name: "HTML",       color: "#E34F26" },
-      { icon: <FaCss3Alt />, name: "CSS",        color: "#1572B6" },
-      { icon: <FaJs />,     name: "JavaScript",  color: "#F7DF1E" },
-    ],
-  },
-  {
-    id: 5,
-    title: "CRUD Application",
-    description: "Full-featured product management system with local storage.",
-    image: project5Image,
-    github: "https://github.com/shehabhany4/products",
-    demo: "https://shehabhany4.github.io/products/",
-    category: "Web App",
-    tools: [
-      { icon: <FaHtml5 />,  name: "HTML",       color: "#E34F26" },
-      { icon: <FaCss3Alt />, name: "CSS",        color: "#1572B6" },
-      { icon: <FaJs />,     name: "JavaScript",  color: "#F7DF1E" },
-    ],
-  },
-  {
-    id: 6,
-    title: "Burger Shop",
-    description: "Restaurant website with modern UI, menu showcase & ordering flow.",
-    image: project6Image,
-    github: "https://github.com/shehabhany4/Burger_Website",
-    demo: "https://shehabhany4.github.io/Burger_Website/",
-    category: "Restaurant",
-    tools: [
-      { icon: <FaHtml5 />,  name: "HTML", color: "#E34F26" },
-      { icon: <FaCss3Alt />, name: "CSS", color: "#1572B6" },
-    ],
-  },
+const translations = { en, ar };
+
+const projectImages = [project1Image, project2Image, project3Image, project4Image, project5Image, project6Image];
+const projectLinks = [
+  { github: "https://github.com/shehabhany4/Ebook_Store",        demo: "https://shehabhany4.github.io/Ebook_Store/" },
+  { github: "https://github.com/shehabhany4/Studying-Online",    demo: "https://shehabhany4.github.io/Studying-Online/" },
+  { github: "https://github.com/shehabhany4/Mini_Iti",           demo: "https://shehabhany4.github.io/Mini_Iti/" },
+  { github: "https://github.com/shehabhany4/Remove_background",  demo: "https://shehabhany4.github.io/Remove_background/" },
+  { github: "https://github.com/shehabhany4/products",           demo: "https://shehabhany4.github.io/products/" },
+  { github: "https://github.com/shehabhany4/Burger_Website",     demo: "https://shehabhany4.github.io/Burger_Website/" },
+];
+const projectTools = [
+  [{ icon: <FaHtml5 />, name: "HTML", color: "#E34F26" }, { icon: <FaCss3Alt />, name: "CSS", color: "#1572B6" }, { icon: <FaJs />, name: "JavaScript", color: "#F7DF1E" }, { icon: <FaReact />, name: "React", color: "#61DAFB" }, { icon: <FaBootstrap />, name: "Bootstrap", color: "#7952B3" }],
+  [{ icon: <FaHtml5 />, name: "HTML", color: "#E34F26" }, { icon: <FaCss3Alt />, name: "CSS", color: "#1572B6" }, { icon: <FaJs />, name: "JavaScript", color: "#F7DF1E" }, { icon: <FaBootstrap />, name: "Bootstrap", color: "#7952B3" }],
+  [{ icon: <FaHtml5 />, name: "HTML", color: "#E34F26" }, { icon: <FaCss3Alt />, name: "CSS", color: "#1572B6" }, { icon: <FaBootstrap />, name: "Bootstrap", color: "#7952B3" }],
+  [{ icon: <FaHtml5 />, name: "HTML", color: "#E34F26" }, { icon: <FaCss3Alt />, name: "CSS", color: "#1572B6" }, { icon: <FaJs />, name: "JavaScript", color: "#F7DF1E" }],
+  [{ icon: <FaHtml5 />, name: "HTML", color: "#E34F26" }, { icon: <FaCss3Alt />, name: "CSS", color: "#1572B6" }, { icon: <FaJs />, name: "JavaScript", color: "#F7DF1E" }],
+  [{ icon: <FaHtml5 />, name: "HTML", color: "#E34F26" }, { icon: <FaCss3Alt />, name: "CSS", color: "#1572B6" }],
 ];
 
 const Projects = () => {
+  const { language } = useLanguage();
+  const t = translations[language].projects;
+
   const sectionRef = useRef(null);
   const cardRefs   = useRef([]);
   const [visibleCards, setVisibleCards] = useState(new Set());
@@ -121,7 +56,6 @@ const Projects = () => {
       },
       { threshold: 0.12 }
     );
-
     cardRefs.current.forEach((el) => el && observer.observe(el));
     return () => observer.disconnect();
   }, []);
@@ -139,53 +73,41 @@ const Projects = () => {
           <div className="proj-eyebrow">
             <span className="proj-eyebrow-num"></span>
             <span className="proj-eyebrow-divider" />
-            <span>Selected Work</span>
+            <span>{t.selectedWork}</span>
           </div>
-
           <h2 className="proj-heading">
-            <span className="proj-heading-main">My Projects</span>
+            <span className="proj-heading-main">{t.title}</span>
             <span className="proj-heading-accent">.</span>
           </h2>
-
-          <p className="proj-subheading">
-            A curated showcase of interfaces, tools &amp; experiments
-          </p>
+          <p className="proj-subheading">{t.subtitle}</p>
         </header>
 
         <div className="proj-grid">
-          {projects.map((project, index) => (
+          {t.items.map((project, index) => (
             <article
-              key={project.id}
+              key={index}
               ref={(el) => (cardRefs.current[index] = el)}
               data-index={index}
               className={`proj-card ${visibleCards.has(index) ? "proj-card--visible" : ""}`}
               style={{ "--enter-delay": `${index * 90}ms` }}
-              onMouseEnter={() => setHoveredCard(project.id)}
+              onMouseEnter={() => setHoveredCard(index)}
               onMouseLeave={() => setHoveredCard(null)}
             >
-              <div className="proj-card__index">
-                {String(index + 1).padStart(2, "0")}
-              </div>
-
+              <div className="proj-card__index">{String(index + 1).padStart(2, "0")}</div>
               <div className="proj-card__category">{project.category}</div>
 
               <div className="proj-card__img-wrap">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  loading="lazy"
-                  className="proj-card__img"
-                />
+                <img src={projectImages[index]} alt={project.title} loading="lazy" className="proj-card__img" />
                 <div className="proj-card__img-overlay">
                   <a
-                    href={project.demo}
+                    href={projectLinks[index].demo}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="proj-card__live-btn"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <FaExternalLinkAlt />
-                    <span>View Live</span>
+                    <span>{t.viewLive}</span>
                     <FaArrowRight className="arrow-icon" />
                   </a>
                 </div>
@@ -198,13 +120,8 @@ const Projects = () => {
                 </div>
 
                 <div className="proj-card__tools">
-                  {project.tools.map((tool, i) => (
-                    <span
-                      key={i}
-                      className="proj-card__tool"
-                      style={{ "--tc": tool.color }}
-                      title={tool.name}
-                    >
+                  {projectTools[index].map((tool, i) => (
+                    <span key={i} className="proj-card__tool" style={{ "--tc": tool.color }} title={tool.name}>
                       <span className="tool-icon">{tool.icon}</span>
                       <span className="tool-name">{tool.name}</span>
                     </span>
@@ -212,23 +129,11 @@ const Projects = () => {
                 </div>
 
                 <div className="proj-card__links">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="proj-link proj-link--github"
-                  >
-                    <FaGithub />
-                    <span>GitHub</span>
+                  <a href={projectLinks[index].github} target="_blank" rel="noopener noreferrer" className="proj-link proj-link--github">
+                    <FaGithub /><span>{t.github}</span>
                   </a>
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="proj-link proj-link--demo"
-                  >
-                    <FaExternalLinkAlt />
-                    <span>Live Demo</span>
+                  <a href={projectLinks[index].demo} target="_blank" rel="noopener noreferrer" className="proj-link proj-link--demo">
+                    <FaExternalLinkAlt /><span>{t.liveDemo}</span>
                   </a>
                 </div>
               </div>

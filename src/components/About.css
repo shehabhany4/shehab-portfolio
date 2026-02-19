@@ -1,4 +1,3 @@
-
 .about-section {
   padding: 100px 0 80px;
   margin: 0.6%;
@@ -48,7 +47,6 @@
   text-align: center;
   margin-bottom: 3.5rem;
 }
-
 
 .about-img-wrapper {
   position: relative;
@@ -131,6 +129,13 @@
   font-weight: 700;
 }
 
+/* ✅ FIX 2: about-bio في RTL */
+[dir="rtl"] .about-bio {
+  padding-left: 0;
+  padding-right: 1rem;
+  border-left: none;
+  border-right: 3px solid color-mix(in srgb, var(--accent-primary) 50%, transparent);
+}
 
 .info-grid {
   display: grid;
@@ -155,6 +160,12 @@
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(0,0,0,0.07);
   background: color-mix(in srgb, var(--bg-card, #fff) 80%, transparent);
+}
+
+/* ✅ FIX 4: info-item في RTL */
+[dir="rtl"] .info-item {
+  flex-direction: row-reverse;
+  text-align: right;
 }
 
 .info-emoji {
@@ -249,6 +260,13 @@ a.info-value:hover {
     border-top: 3px solid color-mix(in srgb, var(--accent-primary) 50%, transparent);
     padding-left: 0;
     padding-top: 0.8rem;
+  }
+
+  /* ✅ في موبايل RTL كمان */
+  [dir="rtl"] .about-bio {
+    border-right: none;
+    border-top: 3px solid color-mix(in srgb, var(--accent-primary) 50%, transparent);
+    padding-right: 0;
   }
 
   .cv-btn {

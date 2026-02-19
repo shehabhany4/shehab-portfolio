@@ -2,27 +2,26 @@ import { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import "./About.css";
 import aboutImage from "../assets/moi.jpg";
+import { useLanguage } from "./LanguageContext";
+import en from "../i18n/en.json";
+import ar from "../i18n/ar.json";
 
-const personalInfo = [
-  { emoji: "📅", label: "Birthday", value: "1 Sep 2005" },
-  { emoji: "🌍", label: "Location", value: "Menofeya, Egypt" },
-  {
-    emoji: "📧",
-    label: "Email",
-    value: "shehab.2005@outlook.com",
-    href: "mailto:shehab.2005@outlook.com",
-  },
-  {
-    emoji: "📞",
-    label: "Phone",
-    value: "010 9782 0873",
-    href: "tel:+201097820873",
-  },
-  { emoji: "🌐", label: "Languages", value: "Arabic & English" },
-  { emoji: "💼", label: "Freelance", value: "Available", badge: true },
-];
+const translations = { en, ar };
 
 const About = () => {
+  const { language } = useLanguage();
+  const t = translations[language].about;
+
+  const personalInfo = [
+    { emoji: "📅", label: t.birthday, value: "1 Sep 2005" },
+    { emoji: "🌍", label: t.location, value: t.locationValue },
+    { emoji: "📧", label: t.email, value: "shehab.2005@outlook.com", href: "mailto:shehab.2005@outlook.com" },
+    { emoji: "📞", label: t.phone, value: "010 9782 0873", href: "tel:+201097820873" },
+    { emoji: "🌐", label: t.languages, value: t.languagesValue },
+    { emoji: "💼", label: t.freelance, value: t.available, badge: true },
+  ];
+
+  // ✅ FIX 3: أضفنا language للـ dependency array
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -36,13 +35,15 @@ const About = () => {
       { threshold: 0.1 },
     );
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-  }, []);
+
+    return () => observer.disconnect();
+  }, [language]);
 
   return (
     <section id="about" className="about-section">
       <Container>
         <div className="section-title-wrapper reveal">
-          <h2 className="section-title">About Me</h2>
+          <h2 className="section-title">{t.title}</h2>
         </div>
 
         <Row className="align-items-center g-5">
@@ -58,13 +59,22 @@ const About = () => {
           </Col>
 
           <Col md={8}>
+            {/* ✅ FIX 1: النص مش بيتكرر في العربي */}
             <p className="about-bio reveal">
-              I’m a passionate <strong>Frontend Developer</strong> from Egypt with 1+ year of
-              hands-on experience crafting modern, responsive web interfaces.
-              I’ve completed 10+ projects and gained real-world experience
-              through 3+ internships. I love turning ideas into clean,
-              performant, and pixel-perfect experiences using HTML, CSS,
-              JavaScript, Bootstrap, and React.
+              {language === "ar" ? (
+                t.bio
+              ) : (
+                t.bio.split("Frontend Developer").map((part, i) =>
+                  i === 0 ? (
+                    <span key={i}>
+                      {part}
+                      <strong>Frontend Developer</strong>
+                    </span>
+                  ) : (
+                    <span key={i}>{part}</span>
+                  )
+                )
+              )}
             </p>
 
             <div className="info-grid">
@@ -78,9 +88,7 @@ const About = () => {
                   <div className="info-content">
                     <span className="info-label">{item.label}</span>
                     {item.href ? (
-                      <a href={item.href} className="info-value">
-                        {item.value}
-                      </a>
+                      <a href={item.href} className="info-value">{item.value}</a>
                     ) : item.badge ? (
                       <span className="info-value">
                         <span className="available-badge">● {item.value}</span>
@@ -100,15 +108,8 @@ const About = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span>View CV</span>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
+                <span>{t.viewCV}</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                   <polyline points="14 2 14 8 20 8" />
                   <line x1="12" y1="11" x2="12" y2="17" />

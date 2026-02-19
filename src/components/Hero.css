@@ -45,56 +45,49 @@
     }
   }
 
-  
-/* Available Badge */
-.available-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.6rem 1.2rem;
-  background: color-mix(in srgb, var(--accent-primary) 10%, transparent);
-  border: 1.5px solid color-mix(in srgb, var(--accent-primary) 25%, transparent);
-  border-radius: 50px;
-  margin-bottom: 1.5rem;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 12px color-mix(in srgb, var(--accent-primary) 15%, transparent);
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.available-badge:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px color-mix(in srgb, var(--accent-primary) 25%, transparent);
-}
-
-.badge-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--accent-primary);
-  border-radius: 50%;
-  animation: pulse-dot 2s ease-in-out infinite;
-  box-shadow: 0 0 0 0 var(--accent-primary);
-}
-
-@keyframes pulse-dot {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(111, 76, 255, 0.7);
+  .available-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.2rem .4rem;
+    background: color-mix(in srgb, var(--accent-primary) 10%, transparent);
+    border: 1.5px solid color-mix(in srgb, var(--accent-primary) 25%, transparent);
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--accent-primary) 15%, transparent);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
-  50% {
-    box-shadow: 0 0 0 8px rgba(111, 76, 255, 0);
+
+  .available-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px color-mix(in srgb, var(--accent-primary) 25%, transparent);
   }
-}
 
-.badge-icon {
-  font-size: 1rem;
-  filter: drop-shadow(0 0 8px var(--accent-primary));
-}
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent-primary);
+    border-radius: 50%;
+    animation: pulse-dot 2s ease-in-out infinite;
+    box-shadow: 0 0 0 0 var(--accent-primary);
+  }
 
-.badge-text {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  letter-spacing: 0.02em;
-}
+  @keyframes pulse-dot {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(111, 76, 255, 0.7);
+    }
+    50% {
+      box-shadow: 0 0 0 8px rgba(111, 76, 255, 0);
+    }
+  }
+
+  .badge-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.02em;
+  }
 
   .hello-text {
     opacity: 0;
@@ -189,6 +182,17 @@
     }
   }
 
+  /* ✅ FIX 3: hello-text في RTL */
+  [dir="rtl"] & .hello-text {
+    padding-left: 0;
+    padding-right: 32px;
+
+    &::before {
+      left: auto;
+      right: 0;
+    }
+  }
+
   @keyframes wave {
     0%, 100% { transform: rotate(0deg); }
     10%, 30% { transform: rotate(14deg); }
@@ -240,69 +244,80 @@
     }
   }
 
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
+  /* ✅ FIX 4: desc-divider في RTL */
+  [dir="rtl"] & .desc-divider {
+    background: linear-gradient(270deg, var(--accent-primary), transparent);
+  }
 
-.btn-primary,
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.7rem 1.2rem;
-  margin-bottom: 1em;
-  font-size: 1rem;
-  font-weight: 700;
-  border-radius: 20px;
-  text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  position: relative;
-  overflow: hidden;
-  border: 2px solid transparent;
-}
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
 
-.btn-primary {
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-hello));
-  color: #fff;
-  box-shadow: 0 6px 20px color-mix(in srgb, var(--accent-primary) 35%, transparent);
-}
+  .btn-primary,
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1.2rem;
+    margin-bottom: 1em;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    /* ✅ FIX 2: z-index على المحتوى عشان ::before ميغطيش النص */
+    z-index: 0;
+  }
 
-.btn-primary::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, var(--accent-hello), var(--accent-primary));
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-hello));
+    color: #fff;
+    box-shadow: 0 6px 20px color-mix(in srgb, var(--accent-primary) 35%, transparent);
+  }
 
-.btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px color-mix(in srgb, var(--accent-primary) 50%, transparent);
-}
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--accent-hello), var(--accent-primary));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
 
-.btn-primary span {
-  position: relative;
-  z-index: 1;
-}
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px color-mix(in srgb, var(--accent-primary) 50%, transparent);
+  }
 
-.btn-secondary {
-  background: transparent;
-  color: var(--text-primary);
-  border-color: color-mix(in srgb, var(--accent-primary) 30%, transparent);
-  box-shadow: 0 4px 12px color-mix(in srgb, var(--accent-primary) 15%, transparent);
-}
+  .btn-primary:hover::before {
+    opacity: 1;
+  }
 
-.btn-secondary:hover {
-  background: color-mix(in srgb, var(--accent-primary) 10%, transparent);
-  border-color: var(--accent-primary);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-primary) 25%, transparent);
-  color: var(--text-primary);
-}
+  .btn-primary span {
+    position: relative;
+    z-index: 1;
+  }
 
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border-color: color-mix(in srgb, var(--accent-primary) 30%, transparent);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--accent-primary) 15%, transparent);
+  }
+
+  .btn-secondary:hover {
+    background: color-mix(in srgb, var(--accent-primary) 10%, transparent);
+    border-color: var(--accent-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-primary) 25%, transparent);
+    color: var(--text-primary);
+  }
 
   .image-col-wrapper {
     display: flex;
@@ -351,12 +366,6 @@
         animation-play-state: paused;
         transform: rotate(0deg) scale(1.05);
       }
-
-      .img-ring--middle {
-        animation-play-state: paused;
-        transform: rotate(180deg) scale(1.03);
-      }
-
       .img-glow {
         opacity: 0.9;
         transform: scale(1.15);
@@ -377,20 +386,10 @@
     animation: spin-ring-reverse 22s linear infinite;
   }
 
-  .img-ring--middle {
-    inset: 5px;
-    border: 2px dotted color-mix(in srgb, var(--accent-hello) 40%, transparent);
-    animation: spin-ring 16s linear infinite;
-  }
-
   .img-ring--inner {
     inset: 20px;
     border: 1.5px solid color-mix(in srgb, var(--accent-primary) 30%, transparent);
     animation: spin-ring-reverse 12s linear infinite;
-  }
-
-  @keyframes spin-ring {
-    to { transform: rotate(360deg); }
   }
 
   @keyframes spin-ring-reverse {
@@ -545,24 +544,68 @@
     }
   }
 
-  [data-theme="light"] .social-icon[aria-label="GitHub"] {
-    color: #fff;
-    background-color: #24292e;
-    box-shadow: 
-      0 4px 12px rgba(36, 41, 46, 0.4),
-      0 0 25px rgba(36, 41, 46, 0.2);
+  /* ✅ FIX 5: Social tooltip في RTL */
+  [dir="rtl"] & .social-icon .social-tooltip {
+    right: auto;
+    left: calc(100% + 12px);
+    transform: translateY(-50%) translateX(-8px);
+
+    &::after {
+      left: auto;
+      right: 100%;
+      border-left-color: transparent;
+      border-right-color: var(--social-color);
+    }
   }
 
-  [data-theme="dark"] .social-icon[aria-label="GitHub"] {
-    background-color: #f6f8fa;
-    color: #24292e;
-    box-shadow: 
-      0 4px 12px rgba(246, 248, 250, 0.3),
-      0 0 25px rgba(246, 248, 250, 0.15);
+  [dir="rtl"] & .social-icon:hover .social-tooltip {
+    transform: translateY(-50%) translateX(0);
   }
 
-  /* Responsive */
   @media (max-width: 768px) {
+    [dir="rtl"] & .social-icon .social-tooltip {
+      right: auto;
+      left: 50%;
+      top: auto;
+      bottom: calc(100% + 10px);
+      transform: translateX(-50%) translateY(6px);
+
+      &::after {
+        right: auto;
+        left: 50%;
+        top: 100%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: var(--social-color);
+        border-right-color: transparent;
+      }
+    }
+
+    [dir="rtl"] & .social-icon:hover .social-tooltip {
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+}
+
+/* ✅ FIX 1: GitHub color برة .hero-section عشان [data-theme] يشتغل صح */
+[data-theme="light"] .social-icon[aria-label="GitHub"] {
+  color: #fff;
+  background-color: #24292e;
+  box-shadow: 
+    0 4px 12px rgba(36, 41, 46, 0.4),
+    0 0 25px rgba(36, 41, 46, 0.2);
+}
+
+[data-theme="dark"] .social-icon[aria-label="GitHub"] {
+  background-color: #f6f8fa;
+  color: #24292e;
+  box-shadow: 
+    0 4px 12px rgba(246, 248, 250, 0.3),
+    0 0 25px rgba(246, 248, 250, 0.15);
+}
+
+@media (max-width: 768px) {
+  .hero-section {
     padding: 12vh 0;
 
     .image-col-wrapper {
@@ -615,8 +658,10 @@
       max-width: 100%;
     }
   }
+}
 
-  @media (max-width: 480px) {
+@media (max-width: 480px) {
+  .hero-section {
     .image-wrapper {
       width: 230px;
       height: 320px;
