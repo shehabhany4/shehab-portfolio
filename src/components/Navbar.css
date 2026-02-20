@@ -776,7 +776,7 @@ html {
 }
 
 [dir="rtl"] .desktop-nav-links {
-  flex-direction: row-reverse;
+    direction: rtl;
 }
 
 [dir="rtl"] .navbar-right {
