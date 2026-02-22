@@ -12,7 +12,7 @@
   "hero": {
     "available": "Available for work",
     "hello": "Hello, I am",
-    "user":"Shehab Hany Helmy",
+    "user": "Shehab Hany Helmy",
     "desc": "Frontend Developer crafting modern, responsive, and user-friendly web interfaces. Focused on clean code, performance, and pixel-perfect, scalable, production-ready projects.",
     "viewWork": "View My Work",
     "getInTouch": "Get In Touch"
@@ -145,9 +145,9 @@
         "category": "UI Design"
       },
       {
-        "title": "Remove Background",
-        "description": "AI-powered background removal tool with instant preview.",
-        "category": "AI Tool"
+        "title": "Healthy Delicious Food",
+        "description": "Healthy meal service providing balanced, tasty dishes crafted from fresh, high-quality ingredients.",
+        "category": "Healthy Food Service"
       },
       {
         "title": "CRUD Application",
