@@ -25,6 +25,43 @@ const socialLinks = [
   { icon: <FaWhatsapp />, href: "https://wa.me/201097820873", label: "WhatsApp", color: "#25D366" },
 ];
 
+// ── Typewriter hook ──────────────────────────────────────────────
+function useTypewriter(text, { typeSpeed = 80, deleteSpeed = 45, pauseAfterType = 1800, pauseAfterDelete = 500 } = {}) {
+  const [displayed, setDisplayed] = useState("");
+  const [phase, setPhase] = useState("typing"); // "typing" | "pausing" | "deleting" | "waiting"
+
+  useEffect(() => {
+    let timeout;
+
+    if (phase === "typing") {
+      if (displayed.length < text.length) {
+        timeout = setTimeout(() => {
+          setDisplayed(text.slice(0, displayed.length + 1));
+        }, typeSpeed);
+      } else {
+        setPhase("pausing");
+      }
+    } else if (phase === "pausing") {
+      timeout = setTimeout(() => setPhase("deleting"), pauseAfterType);
+    } else if (phase === "deleting") {
+      if (displayed.length > 0) {
+        timeout = setTimeout(() => {
+          setDisplayed(text.slice(0, displayed.length - 1));
+        }, deleteSpeed);
+      } else {
+        setPhase("waiting");
+      }
+    } else if (phase === "waiting") {
+      timeout = setTimeout(() => setPhase("typing"), pauseAfterDelete);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayed, phase, text, typeSpeed, deleteSpeed, pauseAfterType, pauseAfterDelete]);
+
+  return { displayed, phase };
+}
+// ────────────────────────────────────────────────────────────────
+
 const Hero = () => {
   const { language } = useLanguage();
   const t = translations[language].hero;
@@ -32,6 +69,13 @@ const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [socialOpen, setSocialOpen] = useState(false);
   const socialRef = useRef(null);
+
+  const { displayed, phase } = useTypewriter(t.user, {
+    typeSpeed: 85,
+    deleteSpeed: 50,
+    pauseAfterType: 2000,
+    pauseAfterDelete: 500,
+  });
 
   useEffect(() => {
     const timeout = setTimeout(() => setIsVisible(true), 300);
@@ -63,12 +107,17 @@ const Hero = () => {
               <span className="badge-text">{t.available}</span>
             </div>
             <p className="hello-text">{t.hello}</p>
+
+            {/* ── hero-title مع typewriter ── */}
             <h1 className="hero-title">
-              {t.user}{" "}
+              <span className="typewriter-text">{displayed}</span>
+              <span className={`typewriter-cursor ${phase === "pausing" ? "blink" : ""}`}>|</span>
+              {" "}
               <span className="title-icon">
                 <FaLaptopCode />
               </span>
             </h1>
+
             <p className="hero-desc">{t.desc}</p>
             <div className="hero-buttons">
               <a href="#projects" className="btn-primary">{t.viewWork}</a>

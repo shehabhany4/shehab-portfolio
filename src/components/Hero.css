@@ -182,7 +182,6 @@
     }
   }
 
-  /* ✅ FIX 3: hello-text في RTL */
   [dir="rtl"] & .hello-text {
     padding-left: 0;
     padding-right: 32px;
@@ -244,12 +243,10 @@
     }
   }
 
-  /* ✅ FIX 4: desc-divider في RTL */
   [dir="rtl"] & .desc-divider {
     background: linear-gradient(270deg, var(--accent-primary), transparent);
   }
 
-  /* ✅ RTL: hero-buttons تتجمع لليمين */
   [dir="rtl"] & .hero-buttons {
     justify-content: flex-end;
   }
@@ -275,7 +272,6 @@
     position: relative;
     overflow: hidden;
     border: 2px solid transparent;
-    /* ✅ FIX 2: z-index على المحتوى عشان ::before ميغطيش النص */
     z-index: 0;
   }
 
@@ -355,10 +351,8 @@
       z-index: 1;
       display: block;
     }
-
   }
 
-  /* ✅ الهوفر على الصورة نفسها بس */
   .image-wrapper img:hover {
     transform: scale(1.06);
     border-color: var(--accent-hello);
@@ -510,6 +504,11 @@
     transform: rotate(45deg);
   }
 
+  /* ══════════════════════════════════════
+     FIX: استخدام CSS variables للـ transform
+     عشان الـ hover يغير الـ scale بس
+     من غير ما يأثر على الـ translate
+  ══════════════════════════════════════ */
   .social-fan-item {
     position: absolute;
     width: 42px;
@@ -523,8 +522,14 @@
     justify-content: center;
     text-decoration: none;
     box-shadow: 0 4px 14px color-mix(in srgb, var(--social-color) 50%, transparent);
+
+    /* ✅ CSS variables للـ transform */
+    --tx: 0px;
+    --ty: 0px;
+    --sc: 0.4;
+    transform: translate(var(--tx), var(--ty)) scale(var(--sc));
+
     opacity: 0;
-    transform: translate(0, 0) scale(0.4);
     transition:
       opacity 0.3s ease,
       transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
@@ -535,42 +540,43 @@
     z-index: 1;
   }
 
-  /* الأيقونات تطلع فوق بشكل arc */
+  /* ✅ كل أيكونة بتغير الـ variables بس، مش الـ transform كلها */
   .social-fab-wrapper.open .social-fan-item:nth-child(1) {
-    transform: translate(-105px, -20px) scale(1);
+    --tx: -105px; --ty: -20px; --sc: 1;
     opacity: 1;
     pointer-events: all;
     transition-delay: 0.00s;
   }
   .social-fab-wrapper.open .social-fan-item:nth-child(2) {
-    transform: translate(-85px, -75px) scale(1);
+    --tx: -85px; --ty: -75px; --sc: 1;
     opacity: 1;
     pointer-events: all;
     transition-delay: 0.05s;
   }
   .social-fab-wrapper.open .social-fan-item:nth-child(3) {
-    transform: translate(-45px, -115px) scale(1);
+    --tx: -45px; --ty: -115px; --sc: 1;
     opacity: 1;
     pointer-events: all;
     transition-delay: 0.10s;
   }
   .social-fab-wrapper.open .social-fan-item:nth-child(4) {
-    transform: translate(10px, -130px) scale(1);
+    --tx: 10px; --ty: -130px; --sc: 1;
     opacity: 1;
     pointer-events: all;
     transition-delay: 0.15s;
   }
   .social-fab-wrapper.open .social-fan-item:nth-child(5) {
-    transform: translate(65px, -115px) scale(1);
+    --tx: 65px; --ty: -115px; --sc: 1;
     opacity: 1;
     pointer-events: all;
     transition-delay: 0.20s;
   }
 
+  /* ✅ الـ hover بيغير --sc بس — الـ translate مش بيتأثر خالص */
   .social-fan-item:hover {
+    --sc: 1.15;
     filter: brightness(1.15);
     box-shadow: 0 6px 20px color-mix(in srgb, var(--social-color) 65%, transparent);
-    transform: scale(1.15) !important;
   }
 
   /* Tooltip فوق كل أيقونة */
@@ -597,7 +603,7 @@
   }
 }
 
-/* ✅ FIX 1: GitHub color برة .hero-section عشان [data-theme] يشتغل صح */
+/* ✅ GitHub color */
 [data-theme="light"] .social-icon[aria-label="GitHub"] {
   color: #fff;
   background-color: #24292e;
@@ -613,6 +619,32 @@
     0 4px 12px rgba(246, 248, 250, 0.3),
     0 0 25px rgba(246, 248, 250, 0.15);
 }
+
+/* ===== Typewriter cursor ===== */
+/* ضيف الكود ده جوا .hero-section {} قبل الـ closing brace */
+
+  .typewriter-text {
+    display: inline;
+  }
+
+  .typewriter-cursor {
+    display: inline-block;
+    margin-left: 2px;
+    color: var(--accent-primary);
+    font-weight: 400;
+    line-height: 1;
+    animation: cursor-flash 0.6s step-end infinite;
+  }
+
+  /* لما بيوقف عند نهاية الكلام يبلنك بشكل أبطأ */
+  .typewriter-cursor.blink {
+    animation: cursor-flash 1s step-end infinite;
+  }
+
+  @keyframes cursor-flash {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
 
 @media (max-width: 768px) {
   .hero-section {
