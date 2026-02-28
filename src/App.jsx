@@ -4,6 +4,7 @@ import { LanguageProvider } from "./components/LanguageContext";
 import MyNavbar from "./components/MyNavbar";
 import GlobalBackground3D from "./components/GlobalBackground3D"; // ← جديد
 import "./App.css";
+import moi from "./assets/moi.jpg";
 
 const Hero        = lazy(() => import("./components/Hero"));
 const Education   = lazy(() => import("./components/Education"));
@@ -20,7 +21,7 @@ const Loader = () => (
     <div className="loader-content">
       <div className="loader-image">
         <div className="image-circle">
-          <img src="src/assets/moi.jpg" alt="Loading" />
+          <img src={moi} alt="Loading" />
         </div>
       </div>
 
