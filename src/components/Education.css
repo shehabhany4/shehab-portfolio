@@ -8,7 +8,6 @@
 /* ── Tokens ─────────────────────────────────────────── */
 :root,
 [data-theme="light"] {
-  --edu-bg:            var(--bg-primary, #fff);
   --edu-surface:       var(--bg-card, #fff);
   --edu-surface-alt:   var(--bg-secondary, #f4f6f9);
   --edu-border:        rgba(0, 0, 0, 0.07);
@@ -36,7 +35,6 @@
 
 [data-theme="dark"],
 body[data-theme="dark"] {
-  --edu-bg:            var(--bg-primary, #0f1117);
   --edu-surface:       var(--bg-card, #1e2235);
   --edu-surface-alt:   var(--bg-secondary, #1a1d2e);
   --edu-border:        rgba(255,255,255,0.07);
@@ -66,7 +64,6 @@ body[data-theme="dark"] {
 .edu-section {
   position: relative;
   padding: 110px 0 120px;
-  background: var(--edu-bg);
   overflow: hidden;
   font-family: 'DM Sans', sans-serif;
   transition: background 0.4s ease, color 0.4s ease;
