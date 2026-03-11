@@ -7,7 +7,7 @@ import project1Image from "../assets/Projects/EBook.png";
 import project2Image from "../assets/Projects/studying.png";
 import project3Image from "../assets/Projects/MiniBrand.jpg";
 import project4Image from "../assets/Projects/yummy.png";
-import project5Image from "../assets/Projects/cruds.png";
+import project5Image from "../assets/Projects/Afaq.png";
 import project6Image from "../assets/Projects/burger.png";
 import "./Projects.css";
 import { useLanguage } from "./LanguageContext";
@@ -22,7 +22,7 @@ const projectLinks = [
   { github: "https://github.com/shehabhany4/Studying-Online",    demo: "https://shehabhany4.github.io/Studying-Online/" },
   { github: "https://github.com/shehabhany4/Mini_Iti",           demo: "https://shehabhany4.github.io/Mini_Iti/" },
   { github: "https://github.com/shehabhany4/Yummy-Resturant",  demo: "https://shehabhany4.github.io/Yummy-Resturant/" },
-  { github: "https://github.com/shehabhany4/products",           demo: "https://shehabhany4.github.io/products/" },
+  { github: "https://github.com/shehabhany4/Afaq-Store",           demo: "https://shehabhany4.github.io/Afaq-Store/" },
   { github: "https://github.com/shehabhany4/Burger_Website",     demo: "https://shehabhany4.github.io/Burger_Website/" },
 ];
 const projectTools = [
@@ -30,7 +30,7 @@ const projectTools = [
   [{ icon: <FaHtml5 />, name: "HTML", color: "#E34F26" }, { icon: <FaCss3Alt />, name: "CSS", color: "#1572B6" }, { icon: <FaJs />, name: "JavaScript", color: "#F7DF1E" }, { icon: <FaBootstrap />, name: "Bootstrap", color: "#7952B3" }],
   [{ icon: <FaHtml5 />, name: "HTML", color: "#E34F26" }, { icon: <FaCss3Alt />, name: "CSS", color: "#1572B6" }, { icon: <FaBootstrap />, name: "Bootstrap", color: "#7952B3" }],
   [{ icon: <FaHtml5 />, name: "HTML", color: "#E34F26" }, { icon: <FaCss3Alt />, name: "CSS", color: "#1572B6" }, { icon: <FaJs />, name: "JavaScript", color: "#F7DF1E" },{ icon: <FaBootstrap />, name: "Bootstrap", color: "#7952B3" }],
-  [{ icon: <FaHtml5 />, name: "HTML", color: "#E34F26" }, { icon: <FaCss3Alt />, name: "CSS", color: "#1572B6" }, { icon: <FaJs />, name: "JavaScript", color: "#F7DF1E" }],
+  [{ icon: <FaHtml5 />, name: "HTML", color: "#E34F26" }, { icon: <FaCss3Alt />, name: "CSS", color: "#1572B6" }, { icon: <FaJs />, name: "JavaScript", color: "#F7DF1E" },{ icon: <FaBootstrap />, name: "Bootstrap", color: "#7952B3" }],
   [{ icon: <FaHtml5 />, name: "HTML", color: "#E34F26" }, { icon: <FaCss3Alt />, name: "CSS", color: "#1572B6" }],
 ];
 

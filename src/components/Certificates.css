@@ -3,7 +3,6 @@
 
 :root,
 [data-theme="light"] {
-  --cert-bg:             var(--bg-primary);
   --cert-surface:        var(--bg-secondary);
   --cert-card-bg:        #ffffff;
   --cert-text:           var(--text-primary);
@@ -38,7 +37,6 @@
 
 [data-theme="dark"],
 body[data-theme="dark"] {
-  --cert-bg:             var(--bg-primary);
   --cert-surface:        var(--bg-card);
   --cert-card-bg:        var(--bg-card);
   --cert-text:           var(--text-primary);
@@ -74,7 +72,6 @@ body[data-theme="dark"] {
 .cert-section {
   position: relative;
   padding: 110px 0 130px;
-  background: var(--cert-bg);
   overflow: hidden;
   font-family: 'DM Sans', sans-serif;
   opacity: 0;

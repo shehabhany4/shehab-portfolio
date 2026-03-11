@@ -150,10 +150,10 @@
         "category": "Healthy Food Service"
       },
       {
-        "title": "CRUD Application",
-        "description": "Full-featured product management system with local storage.",
-        "category": "Web App"
-      },
+  "title": "Afaq Stores",
+  "description": "An online store for browsing and purchasing beauty and personal care products with features for product search and shopping cart management.",
+  "category": "E-Commerce"
+},
       {
         "title": "Burger Shop",
         "description": "Restaurant website with modern UI, menu showcase & ordering flow.",
