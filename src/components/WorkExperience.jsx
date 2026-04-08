@@ -18,7 +18,7 @@ const colors = [
   { color: "#26c6da", colorLight: "rgba(38,198,218,0.12)" },
   { color: "#ffb300", colorLight: "rgba(255,179,0,0.12)" },
 ];
-const statuses = ["current", "current", "completed", "completed"];
+const statuses = ["completed", "current", "completed", "completed"];
 const tags = [
   ["Html", "Css", "JavaScript", "BootStrap"],
   ["React", "Bootstrap", "REST APIs"],
