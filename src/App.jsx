@@ -16,6 +16,7 @@ const About       = lazy(() => import("./components/About"));
 const Contact     = lazy(() => import("./components/Contact"));
 const Footer      = lazy(() => import("./components/Footer"));
 
+
 const Loader = () => (
   <div className="professional-loader">
     <div className="loader-content">
@@ -28,6 +29,8 @@ const Loader = () => (
       <div className="loader-progress">
         <div className="progress-bar"></div>
       </div>
+
+      <div className="loader-text">Loading...</div>
     </div>
   </div>
 );
