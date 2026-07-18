@@ -1,14 +1,26 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
-  FaHtml5, FaCss3Alt, FaJs, FaBootstrap, FaReact,
-  FaGithub, FaExternalLinkAlt, FaArrowRight,
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaBootstrap,
+  FaReact,
+  FaGithub,
+  FaExternalLinkAlt,
+  FaArrowRight,
 } from "react-icons/fa";
-import project1Image from "../assets/Projects/EBook.png";
-import project2Image from "../assets/Projects/studying.png";
-import project3Image from "../assets/Projects/MiniBrand.jpg";
-import project4Image from "../assets/Projects/yummy.png";
-import project5Image from "../assets/Projects/Afaq.png";
-import project6Image from "../assets/Projects/burger.png";
+
+import {
+  SiTailwindcss,
+  SiSupabase,
+  SiReactquery,
+} from "react-icons/si";
+import project1Image from "../assets/Projects/homi.png";
+import project2Image from "../assets/Projects/EBook.png";
+import project3Image from "../assets/Projects/studying.png";
+import project4Image from "../assets/Projects/MiniBrand.jpg";
+import project5Image from "../assets/Projects/yummy.png";
+import project6Image from "../assets/Projects/Afaq.png";
 import "./Projects.css";
 import { useLanguage } from "./LanguageContext";
 import en from "../i18n/en.json";
@@ -18,20 +30,26 @@ const translations = { en, ar };
 
 const projectImages = [project1Image, project2Image, project3Image, project4Image, project5Image, project6Image];
 const projectLinks = [
+  { github: "https://github.com/shehabhany4/Depi-Project",     demo: "https://hommi-app.vercel.app/" },
   { github: "https://github.com/shehabhany4/Ebook_Store",        demo: "https://shehabhany4.github.io/Ebook_Store/" },
   { github: "https://github.com/shehabhany4/Studying-Online",    demo: "https://shehabhany4.github.io/Studying-Online/" },
   { github: "https://github.com/shehabhany4/Mini_Iti",           demo: "https://shehabhany4.github.io/Mini_Iti/" },
   { github: "https://github.com/shehabhany4/Yummy-Resturant",  demo: "https://shehabhany4.github.io/Yummy-Resturant/" },
   { github: "https://github.com/shehabhany4/Afaq-Store",           demo: "https://shehabhany4.github.io/Afaq-Store/" },
-  { github: "https://github.com/shehabhany4/Burger_Website",     demo: "https://shehabhany4.github.io/Burger_Website/" },
 ];
 const projectTools = [
+  [
+  { icon: <FaReact />, name: "React", color: "#61DAFB" },
+  { icon: <SiTailwindcss />, name: "Tailwind", color: "#38BDF8" },
+  { icon: <SiReactquery />, name: "TanStack Query", color: "#FF4154" },
+  { icon: <SiSupabase />, name: "Supabase", color: "#3ECF8E" },
+],
   [{ icon: <FaHtml5 />, name: "HTML", color: "#E34F26" }, { icon: <FaCss3Alt />, name: "CSS", color: "#1572B6" }, { icon: <FaJs />, name: "JavaScript", color: "#F7DF1E" }, { icon: <FaReact />, name: "React", color: "#61DAFB" }, { icon: <FaBootstrap />, name: "Bootstrap", color: "#7952B3" }],
   [{ icon: <FaHtml5 />, name: "HTML", color: "#E34F26" }, { icon: <FaCss3Alt />, name: "CSS", color: "#1572B6" }, { icon: <FaJs />, name: "JavaScript", color: "#F7DF1E" }, { icon: <FaBootstrap />, name: "Bootstrap", color: "#7952B3" }],
   [{ icon: <FaHtml5 />, name: "HTML", color: "#E34F26" }, { icon: <FaCss3Alt />, name: "CSS", color: "#1572B6" }, { icon: <FaBootstrap />, name: "Bootstrap", color: "#7952B3" }],
   [{ icon: <FaHtml5 />, name: "HTML", color: "#E34F26" }, { icon: <FaCss3Alt />, name: "CSS", color: "#1572B6" }, { icon: <FaJs />, name: "JavaScript", color: "#F7DF1E" },{ icon: <FaBootstrap />, name: "Bootstrap", color: "#7952B3" }],
   [{ icon: <FaHtml5 />, name: "HTML", color: "#E34F26" }, { icon: <FaCss3Alt />, name: "CSS", color: "#1572B6" }, { icon: <FaJs />, name: "JavaScript", color: "#F7DF1E" },{ icon: <FaBootstrap />, name: "Bootstrap", color: "#7952B3" }],
-  [{ icon: <FaHtml5 />, name: "HTML", color: "#E34F26" }, { icon: <FaCss3Alt />, name: "CSS", color: "#1572B6" }],
+  
 ];
 
 const Projects = () => {

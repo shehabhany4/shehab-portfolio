@@ -94,7 +94,7 @@
       {
         "role": "React Frontend Developer Trainee",
         "company": "DEPI & MCIT Training Program",
-        "duration": "November 2025 - Present",
+        "duration": "November 2025 - July 2026",
         "description": [
           "Built projects using React, Bootstrap, and RESTful APIs.",
           "Learned best practices in state management and component structuring.",
@@ -130,6 +130,11 @@
     "liveDemo": "Live Demo",
     "items": [
       {
+  "title": "Homi",
+  "description": "A modern web platform for exploring and purchasing architectural house plans, featuring an interactive construction cost calculator and a powerful admin dashboard.",
+  "category": "Web Platform"
+},
+      {
         "title": "E-Book Store",
         "description": "Modern e-commerce platform for digital books with cart & filtering.",
         "category": "E-Commerce"
@@ -153,12 +158,7 @@
   "title": "Afaq Stores",
   "description": "An online store for browsing and purchasing beauty and personal care products with features for product search and shopping cart management.",
   "category": "E-Commerce"
-},
-      {
-        "title": "Burger Shop",
-        "description": "Restaurant website with modern UI, menu showcase & ordering flow.",
-        "category": "Restaurant"
-      }
+}
     ]
   },
   "certificates": {
