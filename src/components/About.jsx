@@ -104,7 +104,7 @@ const About = () => {
             <div className="reveal" style={{ "--reveal-delay": "0.5s" }}>
               <a
                 className="cv-btn"
-                href="https://drive.google.com/file/d/1egxTfPHVZdne1_ijyeXiiecCn8pyCEBY/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1m5nDycc_l3I6wyOLjQ9xaXlpLQfFxNWU/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
               >

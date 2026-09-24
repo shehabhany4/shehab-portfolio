@@ -17,13 +17,14 @@ import cert10 from "../assets/Certificates/c10.png";
 import cert11 from "../assets/Certificates/c11.png";
 import cert12 from "../assets/Certificates/c12.png";
 import cert13 from "../assets/Certificates/c13.png";
+import cert14 from "../assets/Certificates/c14.png";
 
 
 const translations = { en, ar };
 
 const certImages = {
   frontend:    [cert1, cert4, cert5, cert6, cert9],
-  internships: [cert2, cert3,cert13],
+  internships: [cert2, cert3,cert13,cert14],
   others:      [cert7, cert8, cert10, cert11, cert12],
 };
 
