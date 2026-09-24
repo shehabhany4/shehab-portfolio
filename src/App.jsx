@@ -20,6 +20,7 @@ const Footer      = lazy(() => import("./components/Footer"));
 const Loader = () => (
   <div className="professional-loader">
     <div className="loader-content">
+
       <div className="loader-image">
         <div className="image-circle">
           <img src={moi} alt="Loading" />
@@ -30,7 +31,11 @@ const Loader = () => (
         <div className="progress-bar"></div>
       </div>
 
-      <div className="loader-text">Loading...</div>
+      <div className="loader-text">
+        <span>Loading</span>
+        <span className="dots">...</span>
+      </div>
+
     </div>
   </div>
 );
