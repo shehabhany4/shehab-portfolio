@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import "./Hero.css";
-import heroImage from "../assets/ProfileImg.jpg";
+import heroImage from "../assets/profile.jpg";
 import { useLanguage } from "./LanguageContext";
 import en from "../i18n/en.json";
 import ar from "../i18n/ar.json";
