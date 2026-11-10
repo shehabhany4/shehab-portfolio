@@ -12,7 +12,7 @@ const socialLinks = [
   { icon: <FaLinkedin />,  href: "https://www.linkedin.com/in/shehab-hany",  label: "LinkedIn",  color: "#0A66C2" },
   { icon: <FaGithub />,    href: "https://github.com/shehabhany4",            label: "GitHub",    color: "#6c6a6adc" },
   { icon: <FaInstagram />, href: "https://www.instagram.com/shehabhany4",     label: "Instagram", color: "#E1306C" },
-  { icon: <FaWhatsapp />,  href: "https://wa.me/201097820873",                label: "WhatsApp",  color: "#25D366" },
+  { icon: <FaWhatsapp />,  href: "https://wa.me/201035909275",                label: "WhatsApp",  color: "#25D366" },
 ];
 
 const navHrefs = ["#home", "#about", "#skills", "#education", "#work", "#projects", "#certificates", "#contact"];

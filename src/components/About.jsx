@@ -16,7 +16,7 @@ const About = () => {
     { emoji: "📅", label: t.birthday, value: "1 Sep 2005" },
     { emoji: "🌍", label: t.location, value: t.locationValue },
     { emoji: "📧", label: t.email, value: "shehab.2005@outlook.com", href: "mailto:shehab.2005@outlook.com" },
-    { emoji: "📞", label: t.phone, value: "010 9782 0873", href: "tel:+201097820873" },
+    { emoji: "📞", label: t.phone, value: "010 3590 9275", href: "tel:+201035909275" },
     { emoji: "🌐", label: t.languages, value: t.languagesValue },
     { emoji: "💼", label: t.freelance, value: t.available, badge: true },
   ];

@@ -21,7 +21,7 @@ const socialLinks = [
   { icon: faGithub,    href: "https://github.com/shehabhany4",                   color: "#333",    label: "GitHub"   },
   { icon: faFacebook,  href: "https://www.facebook.com/shehab.alshbeny",         color: "#1877F2", label: "Facebook" },
   { icon: faInstagram, href: "https://www.instagram.com/shehabhany4",            color: "#E1306C", label: "Instagram"},
-  { icon: faWhatsapp,  href: "https://wa.me/201097820873",                       color: "#25D366", label: "WhatsApp" },
+  { icon: faWhatsapp,  href: "https://wa.me/201035909275",                       color: "#25D366", label: "WhatsApp" },
 ];
 
 const Contact = () => {
